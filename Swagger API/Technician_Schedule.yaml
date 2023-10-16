@@ -1,0 +1,88 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Scheduling Service API"
+  description: "API for scheduling and assigning orders to technicians."
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: support@chiletel.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://chiletel.management/api/v2
+tags:
+  - name: TechnicianSchedule
+    description: Operations related to Technician Schedules
+  
+paths:
+  /technician/{technicianId}/schedule:
+    get:
+      tags:
+        - TechnicianSchedule
+      summary: "Retrieve the pending orders for a specific technician"
+      parameters:
+        - in: path
+          name: technicianId
+          schema:
+            type: integer
+          required: true
+          description: "ID of the technician to get the schedule for"
+      responses:
+        '200':
+          description: "Technician's pending orders retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttentionOrder'
+        '404':
+          description: "Schedule not found for the given technician ID"
+
+components:
+  schemas:
+    AttentionOrder:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: "Unique identifier for the order"
+        reportDate:
+          type: string
+          format: date-time
+          description: "Date when the damage was reported"
+        fixedDate:
+          type: string
+          format: date-time
+          description: "Date when the damage was fixed, NULL if not resolved yet"
+        duration:
+          type: string
+          description: "Estimated duration to fix the damage"
+        description:
+          type: string
+          description: "Brief description of the reported damage provided by the customer"
+        customerId:
+          type: integer
+          description: "ID of the reporting customer"
+        damageId:
+          type: integer
+          description: "ID of the reported damage type"
+        technicianId:
+          type: integer
+          description: "ID of the technician assigned to fix the damage"
+    Technician:
+      type: object
+      properties:
+        technicianId:
+          type: integer
+          description: "Unique identifier for the technician"
+        name:
+          type: string
+          description: "Technician's full name"
+        document:
+          type: string
+          description: "Technician's identification document"
+        crewId:
+          type: integer
+          description: "ID of the crew that the technician belongs to"

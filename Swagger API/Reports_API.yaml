@@ -1,0 +1,63 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Duration Reports Service API"
+  description: "API for fetching duration data for completed attention orders grouped by Damage type."
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: reports@chiletel.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://chiletel.reports/api/v1
+tags:
+  - name: DurationReport
+    description: Operations related to Duration Reports
+  
+paths:
+  /reports/duration:
+    get:
+      tags:
+        - DurationReport
+      summary: "Retrieve duration data for completed orders based on Damage type"
+      responses:
+        '200':
+          description: "Duration data retrieved successfully"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttentionOrder'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "No completed orders found for the provided criteria"
+          
+components:
+  schemas:
+    AttentionOrder:
+      type: object
+      properties:
+        Order_ID:
+          type: integer
+          description: "Unique identifier for the order"
+        Report_Date:
+          type: string
+          format: date-time
+          description: "Date when the damage was reported"
+        Fixed_Date:
+          type: string
+          format: date-time
+          description: "Date when the damage was fixed (null if unresolved)"
+        Duration:
+          type: string
+          description: "Actual duration it took to fix the damage (null if unresolved)"
+        Damage_ID:
+          type: integer
+          description: "ID of the reported damage type"
+        Description:
+          type: string
+          description: "Brief description of the reported damage"
+

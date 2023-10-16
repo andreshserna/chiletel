@@ -1,0 +1,130 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "Damage and Order Service API"
+  description: "API for managing damages and creating orders based on reported damages."
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: support@chiletel.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+servers:
+  - url: https://chiletel.management/api/v1
+tags:
+  - name: Damage
+    description: Operations related to Damages
+  - name: AttentionOrder
+    description: Operations related to Attention Orders
+  
+paths:
+  /damages:
+    get:
+      tags:
+        - Damage
+      summary: "Retrieve all damage types"
+      responses:
+        '200':
+          description: "List of damage types"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Damage'
+        '404':
+          description: "Damages not found"
+    put:
+      tags:
+        - Damage
+      summary: "Update damage duration"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Damage'
+      responses:
+        '200':
+          description: "Damage updated successfully"
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Damage not found"
+
+  /orders:
+    get:
+      tags:
+        - AttentionOrder
+      summary: "Retrieve all attention orders"
+      responses:
+        '200':
+          description: "List of attention orders"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/AttentionOrder'
+        '404':
+          description: "Orders not found"
+    post:
+      tags:
+        - AttentionOrder
+      summary: "Create an attention order"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/AttentionOrder'
+      responses:
+        '201':
+          description: "Order created successfully"
+        '400':
+          description: "Bad request"
+  
+components:
+  schemas:
+    Damage:
+      type: object
+      properties:
+        damageId:
+          type: integer
+          description: "Unique identifier for damage type"
+        type:
+          type: integer
+          description: "Type of damage"
+        description:
+          type: string
+          description: "Brief description of the damage type"
+        duration:
+          type: string
+          description: "Estimated duration for fixing this type of damage"
+
+    AttentionOrder:
+      type: object
+      properties:
+        orderId:
+          type: integer
+          description: "Unique identifier for the order"
+        reportDate:
+          type: string
+          format: date-time
+          description: "Date when the damage was reported"
+        fixedDate:
+          type: string
+          format: date-time
+          description: "Date when the damage was fixed"
+        description:
+          type: string
+          description: "Brief description of the reported damage provided by the customer"
+        customerId:
+          type: integer
+          description: "ID of the reporting customer"
+        damageId:
+          type: integer
+          description: "ID of the reported damage type"
+        technicianId:
+          type: integer
+          description: "ID of the technician assigned to fix the damage"

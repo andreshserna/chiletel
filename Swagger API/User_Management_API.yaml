@@ -1,0 +1,220 @@
+openapi: 3.0.0
+info:
+  version: "1.0.0"
+  title: "User Management Service API"
+  description: "API for managing customers, technicians, and crews."
+  termsOfService: http://swagger.io/terms/
+  contact:
+    email: juan.hernandez.serna@segurosbolivar.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+externalDocs:
+  description: Find out more about Swagger
+  url: http://swagger.io
+servers:
+  - url: https://chiletel.management/api/v1
+tags:
+  - name: Customer
+    description: Operations related to Customers
+  - name: Technician
+    description: Operations related to Technicians
+  - name: Crew
+    description: Operations related to Crews
+  
+paths:
+  /customers:
+    get:
+      tags:
+        - Customer
+      summary: "List all customers"
+      responses:
+        '200':
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Customer'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Customers not found"
+    post:
+      tags:
+        - Customer
+      summary: "Add a new customer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '201':
+          description: "Customer added successfully"
+        '400':
+          description: "Bad request"
+        '409':
+          description: "Conflict, customer already exists"
+    put:
+      tags:
+        - Customer
+      summary: "Update an existing customer"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Customer'
+      responses:
+        '200':
+          description: "Customer updated successfully"
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Customer not found"
+
+  /technicians:
+    get:
+      tags:
+        - Technician
+      summary: "List all technicians"
+      responses:
+        '200':
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Technician'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Technicians not found"
+    post:
+      tags:
+        - Technician
+      summary: "Add a new technician"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technician'
+      responses:
+        '201':
+          description: "Technician added successfully"
+        '400':
+          description: "Bad request"
+        '409':
+          description: "Conflict, technician already exists"
+    put:
+      tags:
+        - Technician
+      summary: "Update an existing technician"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Technician'
+      responses:
+        '200':
+          description: "Technician updated successfully"
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Technician not found"
+
+  /crews:
+    get:
+      tags:
+        - Crew
+      summary: "List all crews"
+      responses:
+        '200':
+          description: "Successful operation"
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Crew'
+        '400':
+          description: "Bad request"
+        '404':
+          description: "Crews not found"
+    post:
+      tags:
+        - Crew
+      summary: "Add a new crew"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Crew'
+      responses:
+        '201':
+          description: "Crew added successfully"
+        '400':
+          description: "Bad request"
+        '409':
+          description: "Conflict, crew already exists"
+    put:
+      tags:
+        - Crew
+      summary: "Update an existing crew"
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Crew'
+      responses:
+        '200':
+          description: "Crew updated successfully"
+        '400':
+          description: "Bad request"
+
+components:
+  schemas:
+    Customer:
+      type: object
+      properties:
+        customerId:
+          type: integer
+        name:
+          type: string
+        address:
+          type: string
+        district:
+          type: string
+        documentType:
+          type: string
+        document:
+          type: string
+        type:
+          type: string
+          enum: [Hospital, 'Entidad pública', VIP, Comercial, Común]
+    Technician:
+      type: object
+      properties:
+        technicianId:
+          type: integer
+        name:
+          type: string
+        document:
+          type: string
+        crewId:
+          type: integer
+    Crew:
+      type: object
+      properties:
+        crewId:
+          type: integer
+        zone:
+          type: string

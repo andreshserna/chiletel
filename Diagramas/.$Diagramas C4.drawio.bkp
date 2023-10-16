@@ -1,0 +1,28 @@
+<mxfile host="Electron" modified="2023-10-10T20:52:29.229Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.0.2 Chrome/114.0.5735.289 Electron/25.8.4 Safari/537.36" etag="VlsITPIX4iyvclsGpb2w" version="22.0.2" type="device">
+  <diagram name="Página-1" id="ueOIBNtg_DxSxug3QEf2">
+    <mxGraphModel dx="1663" dy="490" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="OL5bQyNhow3UPMDZgHF7-1" value="" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-510" y="360" width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="OL5bQyNhow3UPMDZgHF7-4" value="User&lt;br&gt;&lt;br&gt;Administrator" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="-508" y="430" width="90" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OL5bQyNhow3UPMDZgHF7-5" value="" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-357" y="360" width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="OL5bQyNhow3UPMDZgHF7-6" value="User&lt;br&gt;&lt;br&gt;Customer" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="-347" y="430" width="80" height="60" as="geometry" />
+        </mxCell>
+        <mxCell id="OL5bQyNhow3UPMDZgHF7-7" value="" style="shape=actor;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="-207" y="360" width="100" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="OL5bQyNhow3UPMDZgHF7-8" value="User&lt;br&gt;&lt;br&gt;Technician" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;" vertex="1" parent="1">
+          <mxGeometry x="-200" y="430" width="80" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
