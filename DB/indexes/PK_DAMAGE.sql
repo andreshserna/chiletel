@@ -1,7 +1,9 @@
 /*******************************************************************************
-Description: Table that stores information about bank's transactions
-Author: Team B
-Date 22-09-23
+Description: Primary Key for the damage type table.
+Author: Andres Mauricio Hernandez Serna
 Management Id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
+
+ALTER TABLE TPT_USER_DBA.DAMAGE
+ADD CONSTRAINT pk_damage PRIMARY KEY (damage_id);

@@ -1,10 +1,9 @@
 /*******************************************************************************
-Description: Table that stores information about bank's transactions
-Author: Team B
-Date 22-09-23
+Description: Primary Key for the technician table.
+Author: Andres Mauricio Hernandez Serna
 Management Id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-ALTER TABLE TPT_USER_DBA.DOCUMENT_TYPE ADD CONSTRAINT PK_DOCUMENT_TYPE PRIMARY KEY (document_type_id)
-/
+ALTER TABLE TPT_USER_DBA.TECHNICIAN
+ADD CONSTRAINT pk_technician PRIMARY KEY (technician_id);
