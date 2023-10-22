@@ -1,14 +1,16 @@
 -- Create Pluggable Database
 CREATE PLUGGABLE DATABASE CHILETEL_PRUEBA
-ADMIN USER chile_admin IDENTIFIED BY &admin_pass
+ADMIN USER chile_admin IDENTIFIED BY oracle
 DATAFILE 'C:/chiletel_datafiles/CHILETEL_PRUEBA.dbf' SIZE 500M AUTOEXTEND ON
 FILE_NAME_CONVERT = ('C:\APP\CHIEFPC\PRODUCT\21C\ORADATA\XE\PDBSEED\', 'C:/chiletel_datafiles/');
 
+-- Create users
+CREATE PLUGGABLE DATABASE CHILETEL_PRUEBA
+ADMIN USER chile_admin IDENTIFIED BY oracle
+DATAFILE 'C:/chiletel_datafiles/CHILETEL_PRUEBA.dbf' SIZE 500M AUTOEXTEND ON NEXT 10M MAXSIZE UNLIMITED
+FILE_NAME_CONVERT = ('C:\\APP\\CHIEFPC\\PRODUCT\\21C\\ORADATA\\XE\\PDBSEED\\', 'C:/chiletel_datafiles/');
+
 -- Set permissions
-@./sys/permissions/CHILE_ROL_USER_CONEXION.sql
-@./sys/permissions/CHILE_ROL_USER_DBA.sql
- 
-@./sys/users/CHILE_USER_DBA.sql
 
 -- Create tables
 @./tables/TPT_CUSTOMER.sql
