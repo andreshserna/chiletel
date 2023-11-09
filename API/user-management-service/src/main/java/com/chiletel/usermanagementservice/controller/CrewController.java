@@ -38,7 +38,7 @@ public class CrewController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Crew> updateCrew(@PathVariable Long id, @RequestBody Crew crew) {
-        // Update logic here
+        //  logic 
         return ResponseEntity.ok(crewService.saveCrew(crew));
     }
 
@@ -48,5 +48,5 @@ public class CrewController {
         return ResponseEntity.ok().build();
     }
 
-    // Additional endpoints for managing crews
+    //  endpoints
 }

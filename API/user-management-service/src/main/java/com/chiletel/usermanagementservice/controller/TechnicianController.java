@@ -48,5 +48,4 @@ public class TechnicianController {
         return ResponseEntity.ok().build();
     }
 
-    // Additional endpoints for managing specialties and crews
 }

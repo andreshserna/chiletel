@@ -30,22 +30,6 @@ public class CustomerService {
         return customerRepository.save(customer);
     }
 
-    public Customer updateCustomer(Long id, Customer customer) {
-        return customerRepository.findById(id)
-                .map(existingCustomer -> {
-                    existingCustomer.setName(customer.getName());
-                    existingCustomer.setAddress(customer.getAddress());
-                    existingCustomer.setDistrict(customer.getDistrict());
-                    existingCustomer.setType(customer.getType());
-                    // createdAt should not be updated
-                    existingCustomer.setUpdatedAt(customer.getUpdatedAt());
-                    return customerRepository.save(existingCustomer);
-                }).orElseGet(() -> {
-                    customer.setCustomerId(id);
-                    return customerRepository.save(customer);
-                });
-    }
-
     public void deleteCustomer(Long id) {
         customerRepository.deleteById(id);
     }

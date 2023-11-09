@@ -1,5 +1,7 @@
 package com.chiletel.usermanagementservice.controller;
 
+import com.chiletel.usermanagementservice.dto.CustomerDTO;
+import com.chiletel.usermanagementservice.mapper.CustomerMapper;
 import com.chiletel.usermanagementservice.model.Customer;
 import com.chiletel.usermanagementservice.service.CustomerService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/customers")
@@ -20,25 +23,35 @@ public class CustomerController {
     }
 
     @GetMapping
-    public List<Customer> getAllCustomers() {
-        return customerService.getAllCustomers();
+    public List<CustomerDTO> getAllCustomers() {
+        return customerService.getAllCustomers().stream()
+                .map(CustomerMapper::customerToCustomerDTO)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Customer> getCustomerById(@PathVariable Long id) {
+    public ResponseEntity<CustomerDTO> getCustomerById(@PathVariable Long id) {
         return customerService.getCustomerById(id)
-                .map(ResponseEntity::ok)
+                .map(customer -> ResponseEntity.ok(CustomerMapper.customerToCustomerDTO(customer)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public Customer createCustomer(@RequestBody Customer customer) {
-        return customerService.saveCustomer(customer);
+    public CustomerDTO createCustomer(@RequestBody CustomerDTO customerDTO) {
+        Customer customer = customerService.saveCustomer(CustomerMapper.customerDTOToCustomer(customerDTO));
+        return CustomerMapper.customerToCustomerDTO(customer);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Customer> updateCustomer(@PathVariable Long id, @RequestBody Customer customer) {
-        return ResponseEntity.ok(customerService.updateCustomer(id, customer));
+    public ResponseEntity<CustomerDTO> updateCustomer(@PathVariable Long id, @RequestBody CustomerDTO customerDTO) {
+        return customerService.getCustomerById(id)
+                .map(customer -> {
+                    Customer updatedCustomer = CustomerMapper.customerDTOToCustomer(customerDTO);
+                    updatedCustomer.setCustomerId(id); // Ensure the ID is set correctly for the update
+                    updatedCustomer = customerService.saveCustomer(updatedCustomer);
+                    return ResponseEntity.ok(CustomerMapper.customerToCustomerDTO(updatedCustomer));
+                })
+                .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @DeleteMapping("/{id}")
@@ -46,6 +59,4 @@ public class CustomerController {
         customerService.deleteCustomer(id);
         return ResponseEntity.ok().build();
     }
-
-    // Additional endpoints for customer management
 }
