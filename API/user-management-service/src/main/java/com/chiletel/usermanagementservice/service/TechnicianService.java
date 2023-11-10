@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
-
+import javax.persistence.EntityNotFoundException;
 @Service
 public class TechnicianService {
 
@@ -30,7 +30,23 @@ public class TechnicianService {
         return technicianRepository.save(technician);
     }
 
-    public void deleteTechnician(Long id) {
-        technicianRepository.deleteById(id);
+    public boolean deleteTechnician(Long id) {
+        if (technicianRepository.existsById(id)) {
+            technicianRepository.deleteById(id);
+            return true;
+        }
+        return false;
     }
+    
+    public Technician updateTechnician(Long id, Technician technicianDetails) {
+        return technicianRepository.findById(id).map(technician -> {
+            technician.setName(technicianDetails.getName());
+            technician.setDocument(technicianDetails.getDocument());
+            technician.setDocumentType(technicianDetails.getDocumentType());
+            // Update other fields as needed
+            return technicianRepository.save(technician);
+        }).orElseThrow(() -> new EntityNotFoundException("Technician not found for this id :: " + id));
+    }
+
+
 }

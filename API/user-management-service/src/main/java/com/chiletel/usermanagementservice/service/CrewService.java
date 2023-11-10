@@ -1,6 +1,7 @@
 package com.chiletel.usermanagementservice.service;
 
 import com.chiletel.usermanagementservice.model.Crew;
+import javax.persistence.EntityNotFoundException;
 import com.chiletel.usermanagementservice.repository.CrewRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -29,9 +30,15 @@ public class CrewService {
     public Crew saveCrew(Crew crew) {
         return crewRepository.save(crew);
     }
-
-    public void deleteCrew(Long id) {
-        crewRepository.deleteById(id);
+    
+    public Crew updateCrew(Long id, Crew crewDetails) {
+        return crewRepository.findById(id).map(crew -> {
+            crew.setName(crewDetails.getName());
+            crew.setZone(crewDetails.getZone());
+            return crewRepository.save(crew);
+        }).orElseThrow(() -> new EntityNotFoundException("Crew not found for this id :: " + id));
     }
 
+
+    
 }

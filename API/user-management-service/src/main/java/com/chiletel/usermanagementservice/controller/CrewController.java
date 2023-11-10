@@ -1,5 +1,7 @@
 package com.chiletel.usermanagementservice.controller;
 
+import com.chiletel.usermanagementservice.dto.CrewDTO;
+import com.chiletel.usermanagementservice.mapper.CrewMapper;
 import com.chiletel.usermanagementservice.model.Crew;
 import com.chiletel.usermanagementservice.service.CrewService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,6 +9,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/api/crews")
@@ -20,33 +23,39 @@ public class CrewController {
     }
 
     @GetMapping
-    public List<Crew> getAllCrews() {
-        return crewService.getAllCrews();
+    public List<CrewDTO> getAllCrews() {
+        return crewService.getAllCrews().stream()
+                .map(CrewMapper::crewToCrewDTO)
+                .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Crew> getCrewById(@PathVariable Long id) {
-        return crewService.getCrewById(id)
-                .map(ResponseEntity::ok)
-                .orElseGet(() -> ResponseEntity.notFound().build());
+    public ResponseEntity<CrewDTO> getCrewById(@PathVariable Long id) {
+        Crew crew = crewService.getCrewById(id)
+                .orElse(null);
+        if (crew == null) {
+            return ResponseEntity.notFound().build();
+        }
+        CrewDTO crewDTO = CrewMapper.crewToCrewDTO(crew);
+        return ResponseEntity.ok(crewDTO);
     }
 
     @PostMapping
-    public Crew createCrew(@RequestBody Crew crew) {
-        return crewService.saveCrew(crew);
+    public ResponseEntity<CrewDTO> createCrew(@RequestBody CrewDTO crewDTO) {
+        Crew crew = CrewMapper.crewDTOToCrew(crewDTO);
+        Crew savedCrew = crewService.saveCrew(crew);
+        CrewDTO savedCrewDTO = CrewMapper.crewToCrewDTO(savedCrew);
+        return ResponseEntity.ok(savedCrewDTO);
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Crew> updateCrew(@PathVariable Long id, @RequestBody Crew crew) {
-        //  logic 
-        return ResponseEntity.ok(crewService.saveCrew(crew));
+    public ResponseEntity<?> updateCrew(@PathVariable Long id, @RequestBody CrewDTO crewDTO) {
+        return crewService.getCrewById(id).map(existingCrew -> {
+            existingCrew.setName(crewDTO.getName());
+            existingCrew.setZone(crewDTO.getZone());
+            Crew savedCrew = crewService.saveCrew(existingCrew);
+            CrewDTO savedCrewDTO = CrewMapper.crewToCrewDTO(savedCrew);
+            return ResponseEntity.ok(savedCrewDTO);
+        }).orElse(ResponseEntity.notFound().build());
     }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteCrew(@PathVariable Long id) {
-        crewService.deleteCrew(id);
-        return ResponseEntity.ok().build();
-    }
-
-    //  endpoints
 }

@@ -5,8 +5,6 @@ import com.chiletel.usermanagementservice.repository.TechnicianSpecialtyReposito
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-
 @Service
 public class TechnicianSpecialtyService {
 
@@ -17,7 +15,7 @@ public class TechnicianSpecialtyService {
         this.technicianSpecialtyRepository = technicianSpecialtyRepository;
     }
 
-    public List<TechnicianSpecialty> findAll() {
-        return technicianSpecialtyRepository.findAll();
+    public TechnicianSpecialty saveTechnicianSpecialty(TechnicianSpecialty technicianSpecialty) {
+        return technicianSpecialtyRepository.save(technicianSpecialty);
     }
 }
