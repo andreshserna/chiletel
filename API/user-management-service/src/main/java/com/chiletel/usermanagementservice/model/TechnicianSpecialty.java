@@ -2,13 +2,13 @@ package com.chiletel.usermanagementservice.model;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
+import javax.persistence.EmbeddedId;
+import javax.persistence.ManyToOne;
+import javax.persistence.JoinColumn;
+import javax.persistence.MapsId;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
-import javax.persistence.Id;
-import javax.persistence.Column;
-import javax.persistence.ManyToOne;
-import javax.persistence.JoinColumn;
 
 @Entity
 @Table(name = "TECHNICIAN_SPECIALTY")
@@ -17,19 +17,18 @@ import javax.persistence.JoinColumn;
 @AllArgsConstructor
 public class TechnicianSpecialty {
 
-    @Id
-    @Column(name = "TECHNICIAN_ID")
-    private Long technicianId;
-
-    @Column(name = "DAMAGE_ID")
-    private Long damageId;
+    @EmbeddedId
+    private TechnicianSpecialtyId id;
 
     @ManyToOne
+    @MapsId("technicianId")
     @JoinColumn(name = "TECHNICIAN_ID", insertable = false, updatable = false)
     private Technician technician;
 
     @ManyToOne
+    @MapsId("damageId")
     @JoinColumn(name = "DAMAGE_ID", insertable = false, updatable = false)
     private Damage damage;
 
+    // Otros métodos y campos si son necesarios
 }

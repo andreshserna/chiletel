@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/api/crews")
+@RequestMapping("/api/user-management/crews")
 public class CrewController {
 
     private final CrewService crewService;
