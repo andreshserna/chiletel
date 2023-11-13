@@ -1,2 +1,43 @@
 <app-navbar [dashboardRoute]="'/customer-dashboard'"></app-navbar>
-<p>report-damage works!</p>
+
+<div class="p-grid">
+  <div class="p-col-12 p-md-8 main-panel">
+    <p-toast></p-toast>
+    <!-- Formulario para reportar daño -->
+    <form (ngSubmit)="onSubmit()">
+      <div class="form-group">
+        <label for="orderDescription">Descripción del daño:</label>
+        <input type="text" id="orderDescription" name="orderDescription" [(ngModel)]="orderDescription" required>
+      </div>
+
+      <div class="form-group">
+        <label for="damageType">Tipo de daño:</label>
+        <select id="damageType" name="damageType" [(ngModel)]="damageType" required>
+          <option value="1">Daño eléctrico menor</option>
+          <option value="2">Daño de infraestructura</option>
+          <option value="3">Daño de hardware crítico</option>
+          <option value="4">Fallo de software</option>
+          <option value="5">CORTE DE SERVICIOS ESENCIALES</option>
+        </select>
+      </div>
+
+      <button type="submit" class="submit-button">Reportar Daño</button>
+    </form>
+    <div *ngIf="message" [ngClass]="{'error-message': isError, 'success-message': !isError}">
+      {{ message }}
+    </div>
+  </div>
+
+  <div class="p-col-12 p-md-4 customer-panel">
+    <!-- Contenido del panel del cliente -->
+    <div class="customer-image-container"></div>
+    <div class="client-name">Customer</div>
+    <div class="client-buttons">
+      <p>C.C. 1234093777</p>
+      <p>Dirección</p>
+      <p>Comuna</p>
+      <p>Cualquier duda extra, no dudes en contactarnos!</p>
+      <p>+9 999-99-999</p>
+    </div>
+  </div>
+</div>

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import com.chiletel.damageorderservice.util.DurationConverter;
-
 import javax.persistence.*;
 import java.time.Duration;
 import java.time.LocalDate;
@@ -24,7 +23,7 @@ public class AttentionOrder {
     @Column(name = "ORDER_DESCRIPTION", length = 200)
     private String orderDescription;
 
-    @Column(name = "REPORT_DATE", nullable = false)
+    @Column(name = "REPORT_DATE", nullable = true)
     private LocalDate reportDate;
 
     @ManyToOne

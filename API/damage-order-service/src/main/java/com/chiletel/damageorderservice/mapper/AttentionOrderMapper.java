@@ -25,7 +25,11 @@ public class AttentionOrderMapper {
         AttentionOrder order = new AttentionOrder();
         // Removed setting orderId for new order creation
         order.setOrderDescription(dto.getOrderDescription());
-        order.setReportDate(dto.getReportDate());
+        
+        
+        if (dto.getReportDate() != null) {
+            order.setReportDate(dto.getReportDate());
+        }
 
         if (dto.getCustomerId() != null) {
             Customer customer = new Customer();

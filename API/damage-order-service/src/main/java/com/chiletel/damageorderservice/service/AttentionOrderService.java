@@ -29,6 +29,9 @@ public class AttentionOrderService {
     public AttentionOrder saveOrder(AttentionOrder order) {
         return attentionOrderRepository.save(order);
     }
+    
+    public List<AttentionOrder> getOrdersByCustomerId(Long customerId) {
+        return attentionOrderRepository.findByCustomerCustomerId(customerId);
+    }
 
-    // Since DELETE operations are not required, they are not included
 }

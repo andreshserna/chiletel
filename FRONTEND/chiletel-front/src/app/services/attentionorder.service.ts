@@ -8,6 +8,7 @@ import { AttentionOrder } from '../models/attention-order.model';
 })
 export class AttentionOrderService {
   private apiUrl = 'http://localhost:8080/api/damage-order/attention-orders';
+  private baseUrl = 'http://localhost:8080/api/damage-order/attention-orders/customer';
 
   constructor(private http: HttpClient) {}
 
@@ -18,5 +19,15 @@ export class AttentionOrderService {
   getOrderById(id: number): Observable<AttentionOrder> {
     return this.http.get<AttentionOrder>(`${this.apiUrl}/${id}`);
   }
+
+  getOrdersByCustomerId(customerId: number): Observable<any> {
+    return this.http.get(`${this.baseUrl}/${customerId}`);
+  }
+
+  createOrder(orderData: any): Observable<any> {
+    return this.http.post(`${this.apiUrl}`, orderData);
+  }
+
+  
 
 }

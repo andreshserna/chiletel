@@ -13,9 +13,12 @@ export class CustomerDashboardComponent implements OnInit {
   constructor(private attentionOrderService: AttentionOrderService) {}
 
   ngOnInit(): void {
-    this.attentionOrderService.getAllOrders().subscribe(data => {
-      this.orders = data;
-    });
+    const customerId = parseInt(localStorage.getItem('customerId') || '0');
+    if (customerId) {
+      this.attentionOrderService.getOrdersByCustomerId(customerId).subscribe(data => {
+        this.orders = data;
+      });
+    }
   }
 
   getOrderStatus(order: AttentionOrder): string {

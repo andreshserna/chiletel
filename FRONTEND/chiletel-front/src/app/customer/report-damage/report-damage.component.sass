@@ -1,0 +1,51 @@
+.p-grid
+  display: flex
+  height: 90vh
+
+  .main-panel
+    width: 66%
+    background-color: #D9D9D9
+    padding: 10px
+    overflow-y: auto
+    max-height: 90vh
+    display: flex
+    flex-direction: column
+    align-items: center
+
+    .form-group
+      margin: 10px 0
+
+    .submit-button
+      background-color: #61B064
+      color: white
+      padding: 10px 20px
+      border: none
+      border-radius: 5px
+      cursor: pointer
+
+  .customer-panel
+    background-color: #61B064
+    width: 33%
+    max-width: 390px
+    margin: auto
+    height: 80%
+    border-radius: 36px
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 20px
+
+    .client-buttons
+      display: flex
+      flex-direction: column
+      gap: 10px
+   
+
+@media (max-width: 600px)
+  .p-grid
+    flex-direction: column
+
+    .main-panel, .customer-panel
+      width: 100%
+      padding: 0
+      height: auto

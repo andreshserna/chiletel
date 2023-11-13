@@ -35,6 +35,14 @@ public class AttentionOrderController {
                 .map(order -> ResponseEntity.ok(AttentionOrderMapper.toDTO(order)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+    @GetMapping("/customer/{customerId}")
+    public List<AttentionOrderDTO> getOrdersByCustomerId(@PathVariable Long customerId) {
+        return attentionOrderService.getOrdersByCustomerId(customerId).stream()
+                .map(AttentionOrderMapper::toDTO)
+                .collect(Collectors.toList());
+    }
+    
 
     @PostMapping
     public AttentionOrderDTO createOrder(@RequestBody AttentionOrderDTO orderDTO) {
