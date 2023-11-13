@@ -1,0 +1,24 @@
+<!-- role-selection.component.html -->
+<div class="p-d-flex p-jc-center p-ai-center" style="height: 100vh;">
+  <p-card header="Bienvenido a Chiletel" styleClass="p-m-2">
+    <p class="p-mb-4">Por favor, selecciona tu rol para iniciar sesión:</p>
+    <div class="p-d-flex p-jc-center p-ai-center p-flex-column">
+      <p-button label="Admin" icon="pi pi-user" styleClass="p-button-success p-mb-2" (click)="openDialog('admin')"></p-button>
+      <p-button label="Customer" icon="pi pi-users" styleClass="p-button-info p-mb-2" (click)="openDialog('customer')"></p-button>
+      <p-button label="Technician" icon="pi pi-briefcase" styleClass="p-button-warning" (click)="openDialog('technician')"></p-button>
+    </div>
+  </p-card>
+  <p-dialog [style]="{ 'z-index': 1000 }" header="Iniciar Sesión" [(visible)]="displayDialog" [modal]="true" [closable]="true">
+    <div class="p-fluid">
+      <div class="p-field">
+        <label for="username">Nombre de usuario</label>
+        <input id="username" type="text" pInputText [(ngModel)]="username" autofocus>
+      </div>
+      <div class="p-field">
+        <label for="password">Contraseña</label>
+        <input id="password" type="password" pInputText [(ngModel)]="password">
+      </div>
+      <p-button label="Iniciar Sesión" (onClick)="login()"></p-button>
+    </div>
+  </p-dialog>
+</div>
