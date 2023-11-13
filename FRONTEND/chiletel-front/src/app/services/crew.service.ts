@@ -7,7 +7,7 @@ import { Crew } from '../models/crew.model';
   providedIn: 'root'
 })
 export class CrewService {
-  private apiUrl = 'http://localhost:8080/api/user-management/crews'; // Cambia esto por la URL de tu API
+  private apiUrl = 'http://localhost:8080/api/user-management/crews';
 
   constructor(private http: HttpClient) {}
 
@@ -19,5 +19,4 @@ export class CrewService {
     return this.http.get<Crew>(`${this.apiUrl}/${id}`);
   }
 
-  // Agrega aquí otros métodos si los necesitas, como createCrew, updateCrew, etc.
 }

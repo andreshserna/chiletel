@@ -10,11 +10,21 @@ import { AttentionOrderService } from 'src/app/services/attentionorder.service';
 export class CustomerDashboardComponent implements OnInit {
   orders: AttentionOrder[] = [];
 
-  constructor(private orderService: AttentionOrderService) {}
+  constructor(private attentionOrderService: AttentionOrderService) {}
 
   ngOnInit(): void {
-    this.orderService.getAllOrders().subscribe(data => {
+    this.attentionOrderService.getAllOrders().subscribe(data => {
       this.orders = data;
     });
+  }
+
+  getOrderStatus(order: AttentionOrder): string {
+    if (order.fixedDate && order.technicianId) {
+      return 'RESUELTA';
+    } else if (order.technicianId) {
+      return 'AGENDADA';
+    } else {
+      return 'ABIERTA';
+    }
   }
 }

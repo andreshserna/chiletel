@@ -26,7 +26,7 @@ const routes: Routes = [
   { path: 'admin/view-general-schedule', component: ViewGeneralScheduleComponent },
   { path: 'admin/upload-technician-file', component: UploadTechnicianFileComponent },
   { path: 'admin/view-technicians', component: ViewTechniciansComponent },
-  { path: 'report-damage', component: ReportDamageComponent }
+  { path: 'customer/report-damage', component: ReportDamageComponent }
   // ... otras rutas
 ];
 
