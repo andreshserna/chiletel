@@ -33,5 +33,9 @@ public class AttentionOrderService {
     public List<AttentionOrder> getOrdersByCustomerId(Long customerId) {
         return attentionOrderRepository.findByCustomerCustomerId(customerId);
     }
+    
+    public List<AttentionOrder> getOrdersByTechnicianId(Long technicianId) {
+        return attentionOrderRepository.findByTechnicianTechnicianId(technicianId);
+    }
 
 }

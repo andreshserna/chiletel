@@ -42,7 +42,14 @@ public class AttentionOrderController {
                 .map(AttentionOrderMapper::toDTO)
                 .collect(Collectors.toList());
     }
-    
+
+    // Nuevo método para obtener órdenes por ID de técnico
+    @GetMapping("/technician/{technicianId}")
+    public List<AttentionOrderDTO> getOrdersByTechnicianId(@PathVariable Long technicianId) {
+        return attentionOrderService.getOrdersByTechnicianId(technicianId).stream()
+                .map(AttentionOrderMapper::toDTO)
+                .collect(Collectors.toList());
+    }
 
     @PostMapping
     public AttentionOrderDTO createOrder(@RequestBody AttentionOrderDTO orderDTO) {
@@ -50,6 +57,4 @@ public class AttentionOrderController {
         order = attentionOrderService.saveOrder(order);
         return AttentionOrderMapper.toDTO(order);
     }
-
-    // Update and other necessary endpoints can be added similarly
 }

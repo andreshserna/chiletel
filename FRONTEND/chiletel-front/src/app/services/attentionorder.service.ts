@@ -24,10 +24,12 @@ export class AttentionOrderService {
     return this.http.get(`${this.baseUrl}/${customerId}`);
   }
 
+  getOrdersByTechnicianId(technicianId: number): Observable<AttentionOrder[]> {
+    return this.http.get<AttentionOrder[]>(`${this.apiUrl}/technician/${technicianId}`);
+  }
+
   createOrder(orderData: any): Observable<any> {
     return this.http.post(`${this.apiUrl}`, orderData);
   }
-
-  
 
 }

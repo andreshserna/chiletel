@@ -13,4 +13,6 @@ public interface AttentionOrderRepository extends JpaRepository<AttentionOrder, 
 	
 	List<AttentionOrder> findByCustomerCustomerId(Long customerId);
 	
+	List<AttentionOrder> findByTechnicianTechnicianId(Long technicianId);
+	
 }
