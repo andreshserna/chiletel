@@ -1,1 +1,38 @@
-<p>customer-dashboard works!</p>
+<app-navbar [dashboardRoute]="'/customer-dashboard'"></app-navbar>
+
+<div class="p-grid">
+  <div class="p-col-12 p-md-8">
+    <p-dataView [value]="orders">
+        <ng-template let-order pTemplate="listItem">
+            <div class="order-list-item">
+                <!-- Personaliza estos elementos según tu diseño y datos -->
+                <div class="order-details">
+                    <div class="order-id">Orden {{ order.id }}</div>
+                    <div class="order-description">{{ order.description }}</div>
+                    <!-- Agrega más detalles según sea necesario -->
+                </div>
+                <div class="order-actions">
+                    <!-- Botones de acción como editar, eliminar, etc. -->
+                </div>
+            </div>
+        </ng-template>
+    </p-dataView>
+</div>
+
+    <div class="p-col-12 p-md-4 admin-panel">
+        <div class="admin-image-container">
+        </div>
+        <div class="admin-name">
+          Customer
+        </div>
+        <div class="admin-buttons">
+            <p>C.C. 1234093777</p>
+            <p>Direccion</p>
+            <p>Comuna</p>
+            <button class="admin-button" pButton label="Reportar Dano" routerLink="/admin/view-general-schedule"></button>
+            <p>Cualquier duda extra, no dudes en contactarnos!</p>
+            <p>+9 999-99-999</p>
+          </div>
+          
+      </div>
+</div>

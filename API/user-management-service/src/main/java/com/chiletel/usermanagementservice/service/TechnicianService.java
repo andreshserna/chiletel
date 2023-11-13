@@ -38,6 +38,10 @@ public class TechnicianService {
         return false;
     }
     
+    public boolean existsByDocument(String document) {
+        return technicianRepository.existsByDocument(document);
+    }
+    
     public Technician updateTechnician(Long id, Technician technicianDetails) {
         return technicianRepository.findById(id).map(technician -> {
             technician.setName(technicianDetails.getName());

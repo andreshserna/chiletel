@@ -16,40 +16,48 @@ import java.util.stream.Collectors;
 public class TechnicianController {
 
     private final TechnicianService technicianService;
+    private final TechnicianMapper technicianMapper;
 
     @Autowired
-    public TechnicianController(TechnicianService technicianService) {
+    public TechnicianController(TechnicianService technicianService, TechnicianMapper technicianMapper) {
         this.technicianService = technicianService;
+        this.technicianMapper = technicianMapper;
     }
 
     @GetMapping
     public List<TechnicianDTO> getAllTechnicians() {
         return technicianService.getAllTechnicians().stream()
-                .map(TechnicianMapper::technicianToTechnicianDTO)
+                .map(technicianMapper::technicianToTechnicianDTO)
                 .collect(Collectors.toList());
     }
 
     @GetMapping("/{id}")
     public ResponseEntity<TechnicianDTO> getTechnicianById(@PathVariable Long id) {
         return technicianService.getTechnicianById(id)
-                .map(technician -> ResponseEntity.ok(TechnicianMapper.technicianToTechnicianDTO(technician)))
+                .map(technician -> ResponseEntity.ok(technicianMapper.technicianToTechnicianDTO(technician)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping
-    public TechnicianDTO createTechnician(@RequestBody TechnicianDTO technicianDTO) {
-        Technician technician = technicianService.saveTechnician(TechnicianMapper.technicianDTOToTechnician(technicianDTO));
-        return TechnicianMapper.technicianToTechnicianDTO(technician);
+    public ResponseEntity<?> createTechnician(@RequestBody TechnicianDTO technicianDTO) {
+        if (technicianService.existsByDocument(technicianDTO.getDocument())) {
+            return ResponseEntity
+                .badRequest()
+                .body("Ya existe un técnico con la CC proporcionada.");
+        }
+        Technician technician = technicianMapper.technicianDTOToTechnician(technicianDTO);
+        technician = technicianService.saveTechnician(technician);
+        return ResponseEntity.ok(technicianMapper.technicianToTechnicianDTO(technician));
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<TechnicianDTO> updateTechnician(@PathVariable Long id, @RequestBody TechnicianDTO technicianDTO) {
         return technicianService.getTechnicianById(id)
                 .map(technician -> {
-                    Technician updatedTechnician = TechnicianMapper.technicianDTOToTechnician(technicianDTO);
+                    Technician updatedTechnician = technicianMapper.technicianDTOToTechnician(technicianDTO);
                     updatedTechnician.setTechnicianId(id); // Ensure the ID is set correctly for the update
                     updatedTechnician = technicianService.saveTechnician(updatedTechnician);
-                    return ResponseEntity.ok(TechnicianMapper.technicianToTechnicianDTO(updatedTechnician));
+                    return ResponseEntity.ok(technicianMapper.technicianToTechnicianDTO(updatedTechnician));
                 })
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

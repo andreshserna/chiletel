@@ -1,59 +1,63 @@
 <app-navbar></app-navbar>
 <div class="p-grid">
-  <div class="p-col-12 p-md-8">
-    <div class="create-technician-form">
-        <h2>Crear Nuevo Técnico</h2>
+    <div class="p-col-12 p-md-8">
+        <div class="create-technician-form">
+            <h2>Crear Nuevo Técnico</h2>
+            <p-toast></p-toast>
+            <form #technicianForm="ngForm" (ngSubmit)="onSubmit(technicianForm)">
+                <!-- Nombre del Técnico -->
+                <div class="p-field">
+                    <label for="technicianName">Nombre del Técnico</label>
+                    <input type="text" id="technicianName" pInputText [(ngModel)]="technicianName" name="name" required />
 
-        <form #technicianForm="ngForm">
-            <!-- Nombre del Técnico -->
-            <div class="p-field">
-                <label for="technicianName">Nombre del Técnico</label>
-                <input type="text" id="technicianName" pInputText ngModel name="name" required />
-            </div>
 
-            <!-- Tipo de Documento -->
-            <div class="p-field">
-                <label for="documentType">Tipo de Documento</label>
-                <input type="text" id="documentType" pInputText ngModel name="documentType" required />
-            </div>
+                </div>
 
-            <!-- Número de Documento -->
-            <div class="p-field">
-                <label for="document">Documento</label>
-                <input type="text" id="document" pInputText ngModel name="document" required />
-            </div>
+                <!-- Tipo de Documento -->
+                <div class="p-field">
+                    <label for="documentType">Tipo de Documento</label>
+                    <p-dropdown [options]="documentTypes" [(ngModel)]="selectedDocumentType" name="documentType"></p-dropdown>
 
-            <!-- Selección de Cuadrilla -->
-            <div class="p-field">
-                <label for="crew">Cuadrilla</label>
-                <p-dropdown [options]="crews" optionLabel="label" [(ngModel)]="selectedCrew" name="crewId"></p-dropdown>
-            </div>
+                </div>
 
-            <!-- Selección de Especialidades -->
-            <div class="p-field">
-                <label for="specialties">Especialidades</label>
-                <p-multiSelect [options]="specialties" ngModel name="specialties"></p-multiSelect>
-            </div>
+                <!-- Número de Documento -->
+                <div class="p-field">
+                    <label for="document">Documento</label>
+                    <input type="text" id="document" pInputText [(ngModel)]="technicianDocument" name="document" required />
 
-            <button pButton type="submit" label="Guardar Técnico"></button>
-        </form>
+                </div>
+
+                <!-- Selección de Cuadrilla -->
+                <div class="p-field">
+                    <label for="crew">Cuadrilla</label>
+                    <p-dropdown [options]="crews" [(ngModel)]="selectedCrew" optionLabel="label" name="crew"></p-dropdown>
+
+                </div>
+
+
+                <button pButton type="submit" label="Guardar Técnico"></button>
+            </form>
+        </div>
     </div>
-</div>
 
     <div class="p-col-12 p-md-4 admin-panel">
         <div class="admin-image-container">
         </div>
         <div class="admin-name">
-          ADMIN
+            ADMIN
         </div>
         <div class="admin-buttons">
-            <button class="admin-button" pButton label="CREAR NUEVA AGENDA MANUAL" routerLink="/admin/create-manual-schedule"></button>
-            <button class="admin-button" pButton label="CREAR NUEVO TECNICO" routerLink="/admin/create-technician"></button>
+            <button class="admin-button" pButton label="CREAR NUEVA AGENDA MANUAL"
+                routerLink="/admin/create-manual-schedule"></button>
+            <button class="admin-button" pButton label="CREAR NUEVO TECNICO"
+                routerLink="/admin/create-technician"></button>
             <button class="admin-button" pButton label="VER REPORTES" routerLink="/admin/view-reports"></button>
-            <button class="admin-button" pButton label="VER AGENDA GENERAL" routerLink="/admin/view-general-schedule"></button>
-            <button class="admin-button" pButton label="SUBIR ARCHIVO TECNICOS" routerLink="/admin/upload-technician-file"></button>
+            <button class="admin-button" pButton label="VER AGENDA GENERAL"
+                routerLink="/admin/view-general-schedule"></button>
+            <button class="admin-button" pButton label="SUBIR ARCHIVO TECNICOS"
+                routerLink="/admin/upload-technician-file"></button>
             <button class="admin-button" pButton label="VER TECNICOS" routerLink="/admin/view-technicians"></button>
-          </div>
-          
-      </div>
+        </div>
+
+    </div>
 </div>

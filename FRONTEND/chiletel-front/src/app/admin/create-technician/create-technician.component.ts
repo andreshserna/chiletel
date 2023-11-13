@@ -1,23 +1,31 @@
 import { Component, OnInit } from '@angular/core';
 import { CrewService } from 'src/app/services/crew.service';
+import { TechnicianService } from 'src/app/services/technician.service';
+import { MessageService } from 'primeng/api';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-create-technician',
   templateUrl: './create-technician.component.html',
-  styleUrls: ['./create-technician.component.sass']
+  styleUrls: ['./create-technician.component.sass'],
+  providers: [MessageService]
 })
 export class CreateTechnicianComponent implements OnInit {
   crews: any[] = [];
-  selectedCrew: number; 
-  specialties: any[] = [
-    { label: '1. Daño eléctrico menor', value: 1 },
-    { label: '2. Daño de infraestructura', value: 2 },
-    { label: '3. Daño de hardware crítico', value: 3 },
-    { label: '4. Fallo de software', value: 4 },
-    { label: '5. CORTE DE SERVICIOS ESENCIALES', value: 5 }
+  selectedCrew: any;
+  technicianName: string;
+  technicianDocument: string;
+  selectedDocumentType: string;
+  documentTypes: any[] = [
+    { label: 'CC', value: 'CC' },
+    { label: 'CE', value: 'CE' }
   ];
 
-  constructor(private crewService: CrewService) {}
+  constructor(
+    private crewService: CrewService, 
+    private technicianService: TechnicianService, 
+    private messageService: MessageService
+  ) {}
 
   ngOnInit(): void {
     this.loadCrews();
@@ -32,5 +40,29 @@ export class CreateTechnicianComponent implements OnInit {
     });
   }
 
-  // Otros métodos...
+  onSubmit(form: NgForm) {
+    const technician = { 
+      ...form.value, 
+      name: this.technicianName,
+      document: this.technicianDocument,
+      documentType: this.selectedDocumentType, 
+      crewId: this.selectedCrew.value 
+    };
+
+    console.log('Nombre del Técnico:', this.technicianName);
+    console.log('Tipo de Documento:', this.selectedDocumentType);
+    console.log('Número de Documento:', this.technicianDocument);
+    console.log('ID de la Cuadrilla:', this.selectedCrew.value);
+
+
+    this.technicianService.createTechnician(technician).subscribe(
+      () => {
+        this.messageService.add({ severity: 'success', summary: 'Éxito', detail: 'Técnico agregado correctamente.' });
+        form.resetForm();
+      },
+      (error) => {
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el técnico: ' + error.message });
+      }
+    );
+  }
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
 @Component({
@@ -7,11 +7,12 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent {
+  @Input() dashboardRoute: string = '/admin-dashboard'; // Valor por defecto
+
   constructor(private router: Router) {}
 
   goToDashboard(): void {
-    // Usa la ruta definida en AppRoutingModule
-    this.router.navigate(['/admin-dashboard']);
+    this.router.navigate([this.dashboardRoute]);
   }
 
   logout(): void {

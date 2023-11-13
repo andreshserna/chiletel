@@ -13,6 +13,8 @@ import { RatingModule } from 'primeng/rating';
 import { TagModule } from 'primeng/tag';
 import { DropdownModule } from 'primeng/dropdown';
 import { MultiSelectModule } from 'primeng/multiselect';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -32,6 +34,8 @@ import { ViewReportsComponent } from './admin/view-reports/view-reports.componen
 import { ViewGeneralScheduleComponent } from './admin/view-general-schedule/view-general-schedule.component';
 import { UploadTechnicianFileComponent } from './admin/upload-technician-file/upload-technician-file.component';
 import { ViewTechniciansComponent } from './admin/view-technicians/view-technicians.component';
+import { ReportDamageComponent } from './customer/report-damage/report-damage.component';
+import { AttentionOrderService } from './services/attentionorder.service';
 
 @NgModule({
   declarations: [
@@ -47,7 +51,8 @@ import { ViewTechniciansComponent } from './admin/view-technicians/view-technici
     ViewReportsComponent,
     ViewGeneralScheduleComponent,
     UploadTechnicianFileComponent,
-    ViewTechniciansComponent
+    ViewTechniciansComponent,
+    ReportDamageComponent
   ],
   imports: [
     BrowserModule,
@@ -64,9 +69,10 @@ import { ViewTechniciansComponent } from './admin/view-technicians/view-technici
     RatingModule,
     TagModule,
     DropdownModule,
-    MultiSelectModule
+    MultiSelectModule,
+    ToastModule
   ],
-  providers: [],
+  providers: [MessageService, AttentionOrderService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

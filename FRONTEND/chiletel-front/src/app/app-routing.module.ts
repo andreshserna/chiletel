@@ -11,6 +11,7 @@ import { ViewReportsComponent } from './admin/view-reports/view-reports.componen
 import { ViewGeneralScheduleComponent } from './admin/view-general-schedule/view-general-schedule.component';
 import { UploadTechnicianFileComponent } from './admin/upload-technician-file/upload-technician-file.component';
 import { ViewTechniciansComponent } from './admin/view-technicians/view-technicians.component';
+import { ReportDamageComponent } from './customer/report-damage/report-damage.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'select-role', pathMatch: 'full' }, 
@@ -25,6 +26,7 @@ const routes: Routes = [
   { path: 'admin/view-general-schedule', component: ViewGeneralScheduleComponent },
   { path: 'admin/upload-technician-file', component: UploadTechnicianFileComponent },
   { path: 'admin/view-technicians', component: ViewTechniciansComponent },
+  { path: 'report-damage', component: ReportDamageComponent }
   // ... otras rutas
 ];
 

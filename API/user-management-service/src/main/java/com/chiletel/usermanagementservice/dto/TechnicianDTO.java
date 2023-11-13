@@ -9,5 +9,5 @@ public class TechnicianDTO {
     private String name;
     private String document;
     private String documentType;
-    private Long crewId; // Referenciadt a Crew 
+    private Long crewId;
 }

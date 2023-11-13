@@ -1,5 +1,4 @@
 BEGIN 
-    -- Asumiendo que cada técnico tiene una especialidad única para simplificar
     INSERT INTO APP_ATEN_DANOS.TECHNICIAN_SPECIALTY(TECHNICIAN_ID, DAMAGE_ID)
     VALUES (1, 1);
     
