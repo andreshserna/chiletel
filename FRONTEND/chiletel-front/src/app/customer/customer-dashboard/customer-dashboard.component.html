@@ -4,30 +4,27 @@
   <div class="p-col-12 p-md-8 main-panel">
     <p-dataView [value]="orders">
         <ng-template let-order pTemplate="listItem">
-            <div class="col-12">
-              <div class="flex flex-column md:flex-row align-items-center p-4 gap-4">
-                <!-- Puedes cambiar la clase de la imagen y la fuente según tu diseño -->
-                <img class="product-image w-9 sm:w-16rem xl:w-10rem shadow-2 border-round" src="path-to-order-image" alt="Order Image" />
-                <div class="flex flex-column md:flex-row justify-content-between align-items-center flex-1 gap-4">
-                  <div class="flex flex-column align-items-center md:align-items-start gap-3">
-                    <div class="text-xl font-bold text-900">Orden {{ order.orderId }}</div>
-                    <div class="text-lg">{{ order.orderDescription }}</div>
-                    <div class="flex align-items-center gap-3">
-                      <span>ID Cliente: {{ order.customerId }}</span>
-                      <span>ID Técnico: {{ order.technicianId ? order.technicianId : 'N/A' }}</span>
-                    </div>
-                    <div>Fecha de Reporte: {{ order.reportDate | date:'short' }}</div>
-                    <p-tag [value]="getOrderStatus(order)" [severity]="getOrderStatus(order) === 'RESUELTA' ? 'success' : getOrderStatus(order) === 'AGENDADA' ? 'warning' : 'danger'"></p-tag>
-                  </div>
-                  <div class="flex align-items-center gap-3">
-                    <!-- Botones de acción como editar, eliminar, etc. -->
-                  </div>
-                </div>
+          <div class="order-card">
+            <div class="order-header">
+              <div class="order-title">
+                <span class="order-id">Orden {{ order.orderId }}</span>
+                <span class="order-status" [ngClass]="{'resolved': getOrderStatus(order) === 'RESUELTA', 'scheduled': getOrderStatus(order) === 'AGENDADA', 'open': getOrderStatus(order) === 'ABIERTA'}">{{ getOrderStatus(order) }}</span>
+              </div>
+              <div class="report-date">{{ order.reportDate | date:'short' }}</div>
+            </div>
+            <div class="order-content">
+              <div class="order-description">Tipo de daño: {{ order.damageId }}</div>
+              <div class="order-client-tech">
+                <span>ID Cliente: {{ order.customerId }}</span>
+                <span>ID Técnico: {{ order.technicianId ? order.technicianId : 'N/A' }}</span>
               </div>
             </div>
-          </ng-template>
-    </p-dataView>
+          </div>
+        </ng-template>
+      </p-dataView>
 </div>
+
+
 
     <div class="p-col-12 p-md-4 customer-panel">
         <div class="customer-image-container">

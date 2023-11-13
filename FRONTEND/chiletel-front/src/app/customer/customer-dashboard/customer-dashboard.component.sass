@@ -1,26 +1,79 @@
 .p-grid
-    display: flex
-    height: 100vh
+  display: flex
+  height: 90vh
 
-.main-panel
+  .main-panel
     width: 66%
     background-color: #D9D9D9
+    padding: 10px
+    overflow-y: auto
+    max-height: 90vh
 
-.customer-panel
+  .customer-panel
     background-color: #61B064
     width: 33%
     max-width: 390px
     margin: auto
     height: 80%
     border-radius: 36px
-
-.customer-panel
     display: flex
     flex-direction: column
     align-items: center
     padding: 20px
 
-.client-buttons
+  .order-card
+    display: flex
+    flex-direction: column
+    border: 1px solid #ccc
+    padding: 20px
+    border-radius: 8px
+    background: white
+    margin-bottom: 10px
+
+    .order-header
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      .order-title
+        display: flex
+        flex-direction: column
+
+        .order-id
+          font-weight: bold
+
+      .order-status
+        padding: 2px 8px
+        border-radius: 10px
+        &.resolved
+          background-color: green
+          color: white
+        &.scheduled
+          background-color: orange
+          color: white
+        &.open
+          background-color: red
+          color: white
+
+      .report-date
+        align-self: flex-end
+        font-size: smaller
+
+    .order-content
+      display: flex
+      justify-content: space-between
+      margin-top: 10px
+
+  .client-buttons
     display: flex
     flex-direction: column
     gap: 10px
+
+@media (max-width: 600px)
+  .p-grid
+    flex-direction: column
+
+    .main-panel, .customer-panel
+      width: 100%
+      padding: 0
+      height: auto
