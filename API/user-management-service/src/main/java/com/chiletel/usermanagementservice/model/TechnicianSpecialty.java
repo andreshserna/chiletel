@@ -29,6 +29,6 @@ public class TechnicianSpecialty {
     @MapsId("damageId")
     @JoinColumn(name = "DAMAGE_ID", insertable = false, updatable = false)
     private Damage damage;
+    
 
-    // Otros métodos y campos si son necesarios
 }

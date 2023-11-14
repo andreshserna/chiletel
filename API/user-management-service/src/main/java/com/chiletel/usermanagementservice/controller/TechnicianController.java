@@ -62,9 +62,5 @@ public class TechnicianController {
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteTechnician(@PathVariable Long id) {
-        technicianService.deleteTechnician(id);
-        return ResponseEntity.ok().build();
-    }
+    
 }

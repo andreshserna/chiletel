@@ -1,11 +1,45 @@
 <app-navbar></app-navbar>
 <div class="p-grid">
-    <div class="p-col-12 p-md-8">
-        
+  <div class="p-col-12 p-md-8 admin-main-panel">
+    <div *ngFor="let technician of technicians" class="technician-card">
+      <div class="technician-info">
+        <div class="technician-name">{{ technician.name }}</div>
+        <div class="technician-details">
+          <span>ID: {{ technician.technicianId }}</span>
+          <span>Crew ID: {{ technician.crewId }}</span>
+          <span>Documento: {{ technician.document }}</span>
+        </div>
+      </div>
+      <button pButton type="button" label="Detalles" (click)="showDetails(technician)"></button>
     </div>
+  </div>
+
+  <!-- Modal para detalles del técnico -->
+  <p-dialog header="Detalles del Técnico" [(visible)]="displayModal">
+    <!-- Sección de especialidades -->
+    <div *ngIf="selectedTechnician">
+      <div *ngFor="let specialty of selectedTechnician.specialties">
+        {{ specialty.nombreEspecialidad }}
+      </div>
+
+      <!-- Formulario para actualizar la cuadrilla -->
+      <form (ngSubmit)="updateCrew(selectedTechnician.technicianId, selectedCrew)">
+        <!-- Añade aquí los campos necesarios para la cuadrilla -->
+        <button type="submit">Actualizar Cuadrilla</button>
+      </form>
+
+      <!-- Formulario para agregar nuevas especialidades -->
+      <form (ngSubmit)="addSpecialty(selectedTechnician.technicianId, newSpecialty)">
+        <!-- Añade aquí los campos necesarios para la especialidad -->
+        <button type="submit">Agregar Especialidad</button>
+      </form>
+    </div>
+  </p-dialog>
+
 
     <div class="p-col-12 p-md-4 admin-panel">
         <div class="admin-image-container">
+            <!-- Imagen o contenido gráfico aquí -->
         </div>
         <div class="admin-name">
           ADMIN

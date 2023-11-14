@@ -29,14 +29,6 @@ public class TechnicianService {
     public Technician saveTechnician(Technician technician) {
         return technicianRepository.save(technician);
     }
-
-    public boolean deleteTechnician(Long id) {
-        if (technicianRepository.existsById(id)) {
-            technicianRepository.deleteById(id);
-            return true;
-        }
-        return false;
-    }
     
     public boolean existsByDocument(String document) {
         return technicianRepository.existsByDocument(document);

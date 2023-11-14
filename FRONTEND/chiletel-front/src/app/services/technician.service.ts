@@ -23,5 +23,15 @@ export class TechnicianService {
     return this.http.post<Technician>(this.apiUrl, technician);
   }
 
+  updateTechnicianCrew(technicianId: number, newCrewId: number): Observable<any> {
+    const updatePayload = { crewId: newCrewId };
+    return this.http.put(`${this.apiUrl}/${technicianId}/crew`, updatePayload);
+  }
+
+  addTechnicianSpecialty(technicianId: number, damageId: number): Observable<any> {
+    const specialtyPayload = { damageId: damageId };
+    return this.http.post(`${this.apiUrl}/${technicianId}/specialties`, specialtyPayload);
+  }
+
   // Otros métodos como updateTechnician, deleteTechnician, etc.
 }
