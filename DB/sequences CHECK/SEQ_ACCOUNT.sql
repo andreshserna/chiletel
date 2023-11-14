@@ -1,9 +1,9 @@
 /*******************************************************************************
 Description: Table that stores information about bank's transactions
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 22-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-CREATE SEQUENCE TPT_USER_DBA.SEQ_ACCOUNT START WITH 1 NOMAXVALUE NOCYCLE;
+CREATE SEQUENCE APP_ATEN_DANOS.SEQ_ACCOUNT START WITH 1 NOMAXVALUE NOCYCLE;

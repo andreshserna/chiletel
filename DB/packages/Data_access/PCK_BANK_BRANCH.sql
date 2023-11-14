@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE PCK_BANK_BRANCH IS
 /*******************************************************************************
 Description: Package to manage data access for Bank branch records
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 22-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
@@ -20,7 +20,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that inserts a bank branch object
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -33,7 +33,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that obtains all bank branch
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -46,7 +46,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that obtains a bank branch
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -60,7 +60,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that updates a bank branch object
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar

@@ -5,5 +5,5 @@ Management Id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-ALTER TABLE TPT_USER_DBA.ATTENTION_ORDER
+ALTER TABLE APP_ATEN_DANOS.ATTENTION_ORDER
 ADD CONSTRAINT pk_attention_order PRIMARY KEY (order_id);

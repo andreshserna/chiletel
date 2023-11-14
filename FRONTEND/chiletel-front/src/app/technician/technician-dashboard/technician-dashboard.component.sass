@@ -1,0 +1,91 @@
+.p-grid
+  display: flex
+  height: 90vh
+  background-color: white
+
+  .main-panel
+    width: 66%
+    background-color: #D9D9D9
+    height: 90%
+    margin: auto
+    border-radius: 36px
+    padding: 15px
+    overflow-y: auto
+    max-height: 90vh
+
+  .technician-panel
+    background-color: #FFB800 // Cambia el color según tus preferencias
+    width: 33%
+    max-width: 390px
+    margin: auto
+    height: 90%
+    border-radius: 36px
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 20px
+
+  .order-card
+    display: flex
+    flex-direction: column
+    padding: 15px
+    border-radius: 16px
+    background-color: #F2F2F2
+    margin-bottom: 10px
+    border-left: 5px solid #4D9FEC // Color de acento para el panel del técnico
+
+  .order
+    padding-bottom: 5px
+    margin: 15px
+
+    .order-header
+      display: flex
+      justify-content: space-between
+      align-items: center
+
+      .order-title
+        display: flex
+        flex-direction: column
+
+        .order-id
+          font-weight: bold
+
+      .order-status
+        padding: 2px 8px
+        border-radius: 10px
+        &.completed
+          background-color: green
+          color: white
+        &.scheduled
+          background-color: orange
+          color: white
+        &.pending
+          background-color: red
+          color: white
+
+      .report-date
+        align-self: flex-end
+        font-size: smaller
+
+    .order-content
+      display: flex
+      justify-content: space-between
+      margin-top: 10px
+
+  .technician-info-container
+    // Estilos para el contenedor de información del técnico
+
+  .technician-name
+    // Estilos para el nombre del técnico
+
+  .technician-details
+    // Estilos para los detalles del técnico
+
+  @media (max-width: 600px)
+    .p-grid
+      flex-direction: column
+
+      .main-panel, .technician-panel
+        width: 100%
+        padding: 0
+        height: auto

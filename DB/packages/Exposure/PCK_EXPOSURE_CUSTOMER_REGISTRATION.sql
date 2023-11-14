@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE PCK_EXPOSURE_CUSTOMER_REGISTRATION IS
 /*******************************************************************************
 Description: Package to manage data access for Transaction records
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 22-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
@@ -13,7 +13,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description:
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar

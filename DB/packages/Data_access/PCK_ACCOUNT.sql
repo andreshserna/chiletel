@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE PCK_ACCOUNT IS
 /*******************************************************************************
 Description: Package to manage data access for Account records
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 22-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
@@ -21,7 +21,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that inserts an account object
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -34,7 +34,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that obtains an account object
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -48,7 +48,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that obtains all customer account objects
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -62,7 +62,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that updates an account object
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar

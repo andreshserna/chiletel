@@ -50,6 +50,14 @@ public class AttentionOrderController {
                 .map(AttentionOrderMapper::toDTO)
                 .collect(Collectors.toList());
     }
+    
+    @PutMapping("/{id}")
+    public ResponseEntity<AttentionOrderDTO> updateOrderDuration(@PathVariable Long id, @RequestBody AttentionOrderDTO orderDTO) {
+        return attentionOrderService.updateOrderDuration(id, orderDTO)
+                .map(order -> ResponseEntity.ok(AttentionOrderMapper.toDTO(order)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 
     @PostMapping
     public AttentionOrderDTO createOrder(@RequestBody AttentionOrderDTO orderDTO) {

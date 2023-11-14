@@ -5,5 +5,5 @@ Management Id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-ALTER TABLE TPT_USER_DBA.CUSTOMER
+ALTER TABLE APP_ATEN_DANOS.CUSTOMER
 ADD CONSTRAINT pk_customer PRIMARY KEY (customer_id);

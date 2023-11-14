@@ -1,12 +1,12 @@
 /*******************************************************************************
 Description: Table that stores the information of the bank's clients
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date: 22-09-23
 Management_id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-CREATE OR REPLACE TYPE TPT_USER_DBA.TYRC_CUSTOMER AS OBJECT
+CREATE OR REPLACE TYPE APP_ATEN_DANOS.TYRC_CUSTOMER AS OBJECT
 (
     CUSTOMER_ID NUMBER(10),
     FIRST_NAME VARCHAR2(20),

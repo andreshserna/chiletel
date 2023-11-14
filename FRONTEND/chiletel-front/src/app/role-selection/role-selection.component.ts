@@ -51,7 +51,7 @@ export class RoleSelectionComponent {
       if (this.username === this.mockUsers[this.selectedRole]?.username && 
           this.password === this.mockUsers[this.selectedRole]?.password) {
         localStorage.setItem('userRole', this.selectedRole);
-        localStorage.setItem('technicianId', '1');
+        localStorage.setItem('technicianId', '5');
         this.router.navigate([`${this.selectedRole}-dashboard`]);
         this.displayDialog = false;
       } else {

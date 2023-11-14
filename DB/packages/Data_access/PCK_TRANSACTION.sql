@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE PCK_TRANSACTION IS
 /*******************************************************************************
 Description: Package to manage data access for Transaction records
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 22-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
@@ -20,7 +20,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that inserts a transaction object
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -33,7 +33,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that gets all transactions
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar
@@ -46,7 +46,7 @@ Management Id: XD01
 
     /*******************************************************************************
     Description: Procedure that gets a transaction by id
-    Author: Team B
+    Author: Andres Mauricio Hernandez Serna
     Date 28-09-23
     Management Id: XD01
     @copyright: Seguros Bolívar

@@ -32,4 +32,8 @@ export class AttentionOrderService {
     return this.http.post(`${this.apiUrl}`, orderData);
   }
 
+
+  updateOrderDuration(orderId: number, duration: string): Observable<any> {
+    return this.http.put(`${this.apiUrl}/${orderId}`, { duration: duration });
+  }
 }

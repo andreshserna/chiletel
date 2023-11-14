@@ -5,5 +5,5 @@ Management Id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-ALTER TABLE TPT_USER_DBA.DAMAGE
+ALTER TABLE APP_ATEN_DANOS.DAMAGE
 ADD CONSTRAINT pk_damage PRIMARY KEY (damage_id);

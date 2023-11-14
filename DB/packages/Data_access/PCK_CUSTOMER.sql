@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE PCK_CUSTOMER IS
 /*******************************************************************************
 Description: Package to manage data access for Customer records
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 22-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
@@ -21,7 +21,7 @@ Management Id: XD01
 
 	/*******************************************************************************
 	Description: Procedure that inserts a customer object
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar
@@ -34,7 +34,7 @@ Management Id: XD01
 
 	/*******************************************************************************
 	Description: Procedure that obtains all customers
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar
@@ -47,7 +47,7 @@ Management Id: XD01
 
 	/*******************************************************************************
 	Description: Procedure that obtains a customer object
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar
@@ -61,7 +61,7 @@ Management Id: XD01
 
 	/*******************************************************************************
 	Description: Procedure that updates a customer object
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar

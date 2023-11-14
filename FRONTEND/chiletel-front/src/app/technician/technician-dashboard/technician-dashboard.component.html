@@ -4,21 +4,20 @@
   <div class="p-col-12 p-md-8 main-panel">
     <p-dataView [value]="orders">
         <ng-template let-order pTemplate="listItem">
-          <!-- Contenido adaptado para el técnico -->
           <div class="order-card">
             <div class="order">
               <div class="order-header">
                 <div class="order-title">
                   <span class="order-id">Orden {{ order.orderId }}</span>
-                  <!-- Estado de la orden adaptado para el técnico -->
-                  <span class="order-status" [ngClass]="{'completed': getOrderStatus(order) === 'COMPLETADA', 'assigned': getOrderStatus(order) === 'ASIGNADA', 'pending': getOrderStatus(order) === 'PENDIENTE'}">{{ getOrderStatus(order) }}</span>
                 </div>
                 <div class="report-date">{{ order.reportDate | date: 'M/d/yy' }}</div>
+                <div *ngIf="shouldShowUpdateButton(order)" class="update-duration-button">
+                  <button pButton type="button" label="Actualizar Duración" (click)="showDurationDialog(order)"></button>
+                </div>
               </div>
               <div class="order-content">
-                <!-- Información relevante para el técnico -->
-                <div class="order-details">Detalles de la Orden: {{ order.details }}</div>
-                <div class="order-client">
+                <div class="order-description">Tipo de Daño: {{ order.damageId }}</div>
+                <div class="order-client-tech">
                   <span>ID Cliente: {{ order.customerId }}</span>
                 </div>
               </div>
@@ -27,4 +26,28 @@
         </ng-template>
     </p-dataView>
   </div>
+
+  <div class="p-col-12 p-md-4 technician-panel">
+    <div class="technician-info-container">
+      <!-- Aquí puedes incluir la foto o el logo del técnico -->
+    </div>
+    <div class="technician-name">
+      Nombre del Técnico
+    </div>
+    <div class="technician-details">
+      <p>ID: </p>
+      <p>Especialidades: </p>
+      <p>Cuadrilla: </p>
+      <!-- Más detalles que desees agregar -->
+    </div>
+  </div>
 </div>
+<p-dialog header="Actualizar Duración" [(visible)]="durationDialogVisible" [modal]="true" [style]="{width: '50vw'}">
+  <div class="p-fluid">
+      <div class="p-field">
+          <label for="duration">Duración (e.g., PT1H)</label>
+          <input id="duration" type="text" pInputText [(ngModel)]="selectedOrderDuration">
+      </div>
+      <button pButton type="button" label="Guardar" (click)="updateOrderDuration()"></button>
+  </div>
+</p-dialog>

@@ -5,5 +5,5 @@ Management_id: XD01
 @copyright: Seguros Bolívar
 *******************************************************************************/
 
-ALTER TABLE TPT_USER_DBA.ATTENTION_ORDER
-ADD CONSTRAINT fk_attention_order_damage FOREIGN KEY (damage_id) REFERENCES TPT_USER_DBA.DAMAGE(damage_id);
+ALTER TABLE APP_ATEN_DANOS.ATTENTION_ORDER
+ADD CONSTRAINT fk_attention_order_damage FOREIGN KEY (damage_id) REFERENCES APP_ATEN_DANOS.DAMAGE(damage_id);

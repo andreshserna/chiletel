@@ -1,7 +1,7 @@
 CREATE OR REPLACE PACKAGE PCK_DOCUMENT_TYPE IS
 /*******************************************************************************
 Description: Package that manages operations on DOCUMENT_TYPE table.
-Author: Team B
+Author: Andres Mauricio Hernandez Serna
 Date 28-09-23
 Management Id: XD01
 @copyright: Seguros Bolívar
@@ -18,7 +18,7 @@ Management Id: XD01
     
 	/*******************************************************************************
 	Description: Procedure that inserts a document type object
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar
@@ -32,7 +32,7 @@ Management Id: XD01
     
 	/*******************************************************************************
 	Description: Procedure that gets all document types
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar
@@ -45,7 +45,7 @@ Management Id: XD01
 
 	/*******************************************************************************
 	Description: Procedure that gets a document type object by its id
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar
@@ -60,7 +60,7 @@ Management Id: XD01
     
 	/*******************************************************************************
 	Description: Procedure that updates a document type 
-	Author: Team B
+	Author: Andres Mauricio Hernandez Serna
 	Date 28-09-23
 	Management Id: XD01
 	@copyright: Seguros Bolívar

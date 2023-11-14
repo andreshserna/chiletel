@@ -1,5 +1,6 @@
 package com.chiletel.damageorderservice.service;
 
+import com.chiletel.damageorderservice.dto.AttentionOrderDTO;
 import com.chiletel.damageorderservice.model.AttentionOrder;
 import com.chiletel.damageorderservice.repository.AttentionOrderRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -38,4 +39,13 @@ public class AttentionOrderService {
         return attentionOrderRepository.findByTechnicianTechnicianId(technicianId);
     }
 
+    public Optional<AttentionOrder> updateOrderDuration(Long id, AttentionOrderDTO orderDTO) {
+        return getOrderById(id).map(order -> {
+            if (order.getFixedDate() == null) {
+                order.setDuration(orderDTO.getDuration());
+                return attentionOrderRepository.save(order);
+            }
+            return null;
+        });
+    }
 }
