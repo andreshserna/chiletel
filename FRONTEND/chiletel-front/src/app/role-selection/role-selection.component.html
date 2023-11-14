@@ -1,11 +1,10 @@
-<!-- role-selection.component.html -->
-<div class="p-d-flex p-jc-center p-ai-center" style="height: 100vh;">
-  <p-card header="Bienvenido a Chiletel" styleClass="p-m-2">
+<div class="p-d-flex p-jc-center p-ai-center">
+  <p-card header="Bienvenido a Chiletel" styleClass="p-m-2 custom-card">
     <p class="p-mb-4">Por favor, selecciona tu rol para iniciar sesión:</p>
     <div class="p-d-flex p-jc-center p-ai-center p-flex-column">
-      <p-button label="Admin" icon="pi pi-user" styleClass="p-button-success p-mb-2" (click)="openDialog('admin')"></p-button>
-      <p-button label="Customer" icon="pi pi-users" styleClass="p-button-info p-mb-2" (click)="openDialog('customer')"></p-button>
-      <p-button label="Technician" icon="pi pi-briefcase" styleClass="p-button-warning" (click)="openDialog('technician')"></p-button>
+      <p-button label="Admin" icon="pi pi-user" styleClass="p-button-success custom-button p-mb-2" (click)="openDialog('admin')"></p-button>
+      <p-button label="Customer" icon="pi pi-users" styleClass="p-button-info custom-button p-mb-2" (click)="openDialog('customer')"></p-button>
+      <p-button label="Technician" icon="pi pi-briefcase" styleClass="p-button-warning custom-button" (click)="openDialog('technician')"></p-button>
     </div>
   </p-card>
   <p-dialog [style]="{ 'z-index': 1000 }" header="Iniciar Sesión" [(visible)]="displayDialog" [modal]="true" [closable]="true">

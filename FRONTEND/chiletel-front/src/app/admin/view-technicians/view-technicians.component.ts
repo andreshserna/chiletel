@@ -25,12 +25,11 @@ export class ViewTechniciansComponent implements OnInit {
     this.selectedTechnician = technician;
     this.displayModal = true;
 
-    // Llamada para obtener las especialidades del técnico
+    
     this.getTechnicianSpecialties(technician.technicianId);
   }
 
   getTechnicianSpecialties(technicianId: number) {
-    // Suponiendo que tengas un servicio para esto
     this.technicianService.getTechnicianSpecialties(technicianId).subscribe(
       specialties => {
         this.technicianSpecialties = specialties;
@@ -42,10 +41,10 @@ export class ViewTechniciansComponent implements OnInit {
   }
 
   updateCrew(technicianId: number, newCrewId: number) {
-    // Llamada al servicio para actualizar la cuadrilla
+    
   }
 
   addSpecialty(technicianId: number, newSpecialty: number) {
-    // Llamada al servicio para agregar la especialidad
+    
   }
 }

@@ -4,7 +4,7 @@ export class AttentionOrder {
   customerId: number;
   damageId: number;
   technicianId?: number;
-  duration?: string; // Consider using a class or interface if you need to handle specific intervals
+  duration?: string;
   fixedDate?: Date;
   orderId: number;
 

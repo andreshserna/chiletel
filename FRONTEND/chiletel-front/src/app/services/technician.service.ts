@@ -34,6 +34,7 @@ export class TechnicianService {
   }
   
   getTechnicianSpecialties(technicianId: number): Observable<any[]> {
-    return this.http.get<any[]>(`${this.apiUrl}/technician-specialties/${technicianId}/specialties`);
+    return this.http.get<any[]>(`${this.apiUrl}/${technicianId}/specialties`);
   }
+  
 }

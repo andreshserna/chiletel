@@ -27,7 +27,6 @@ const routes: Routes = [
   { path: 'admin/upload-technician-file', component: UploadTechnicianFileComponent },
   { path: 'admin/view-technicians', component: ViewTechniciansComponent },
   { path: 'customer/report-damage', component: ReportDamageComponent }
-  // ... otras rutas
 ];
 
 @NgModule({

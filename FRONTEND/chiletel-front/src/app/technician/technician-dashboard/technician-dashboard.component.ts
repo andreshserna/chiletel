@@ -23,7 +23,7 @@ export class TechnicianDashboardComponent implements OnInit {
     const technicianId = parseInt(localStorage.getItem('technicianId') || '0');
     if (technicianId) {
       this.attentionOrderService.getOrdersByTechnicianId(technicianId).subscribe(data => {
-        this.orders = data;
+        this.orders = this.sortOrders(data);
       });
     }
   }
@@ -34,12 +34,12 @@ export class TechnicianDashboardComponent implements OnInit {
   }
 
   shouldShowUpdateButton(order: AttentionOrder): boolean {
-    // Considerar posibles formatos de 'fixedDate' y ajustar según tu modelo y lógica de backend
+    
     return !order.fixedDate || this.isDateInvalid(order.fixedDate);
   }
 
   isDateInvalid(date: any): boolean {
-    // Implementar lógica para verificar si la fecha es inválida (e.g., 'null', '', 'undefined')
+    
     return date === 'null' || date === '' || date === undefined;
   }
 
@@ -47,8 +47,16 @@ export class TechnicianDashboardComponent implements OnInit {
     if (this.selectedOrderId && this.selectedOrderDuration) {
       this.attentionOrderService.updateOrderDuration(this.selectedOrderId, this.selectedOrderDuration).subscribe(() => {
         this.durationDialogVisible = false;
-        this.loadOrders(); // Recargar las órdenes para reflejar los cambios
+        this.loadOrders(); 
       });
     }
+  }
+
+  sortOrders(orders: AttentionOrder[]): AttentionOrder[] {
+    return orders.sort((a, b) => {
+      const updateA = this.shouldShowUpdateButton(a) ? 0 : 1;
+      const updateB = this.shouldShowUpdateButton(b) ? 0 : 1;
+      return updateA - updateB;
+    });
   }
 }

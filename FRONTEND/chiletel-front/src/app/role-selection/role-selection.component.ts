@@ -47,7 +47,7 @@ export class RoleSelectionComponent {
         this.password = '';
       }
     } else {
-      // Lógica para otros roles (admin, technician)
+      
       if (this.username === this.mockUsers[this.selectedRole]?.username && 
           this.password === this.mockUsers[this.selectedRole]?.password) {
         localStorage.setItem('userRole', this.selectedRole);

@@ -7,7 +7,7 @@ import { Router } from '@angular/router';
   styleUrls: ['./navbar.component.sass']
 })
 export class NavbarComponent {
-  @Input() dashboardRoute: string = '/admin-dashboard'; // Valor por defecto
+  @Input() dashboardRoute: string = '/admin-dashboard'; 
 
   constructor(private router: Router) {}
 
@@ -16,7 +16,7 @@ export class NavbarComponent {
   }
 
   logout(): void {
-    // cerrar sesión
+    
     this.router.navigate(['/select-role']);
   }
 }
