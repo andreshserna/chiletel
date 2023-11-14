@@ -34,8 +34,13 @@ export class TechnicianDashboardComponent implements OnInit {
   }
 
   shouldShowUpdateButton(order: AttentionOrder): boolean {
-    // Asegúrate de que la comprobación se ajuste al tipo y formato de fixedDate en tu modelo
-    return !order.fixedDate || typeof order.fixedDate === 'string' && (order.fixedDate === '' || order.fixedDate === 'null');
+    // Considerar posibles formatos de 'fixedDate' y ajustar según tu modelo y lógica de backend
+    return !order.fixedDate || this.isDateInvalid(order.fixedDate);
+  }
+
+  isDateInvalid(date: any): boolean {
+    // Implementar lógica para verificar si la fecha es inválida (e.g., 'null', '', 'undefined')
+    return date === 'null' || date === '' || date === undefined;
   }
 
   updateOrderDuration(): void {
