@@ -37,4 +37,10 @@ public class Technician {
     @ManyToOne
     @JoinColumn(name = "CREW_ID", nullable = false, foreignKey = @ForeignKey(name = "FK_TECHNICIAN_CREW"))
     private Crew crew;
+    
+    public void setId(Long technicianId) {
+        this.technicianId = technicianId;
+    }
+    
+    
 }

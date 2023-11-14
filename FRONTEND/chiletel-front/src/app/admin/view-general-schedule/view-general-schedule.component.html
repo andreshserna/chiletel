@@ -1,24 +1,47 @@
-<p>view-general-schedule works!</p>
 <app-navbar></app-navbar>
 <div class="p-grid">
-    <div class="p-col-12 p-md-8">
-        
-    </div>
-
-    <div class="p-col-12 p-md-4 admin-panel">
-        <div class="admin-image-container">
-        </div>
-        <div class="admin-name">
-          ADMIN
-        </div>
-        <div class="admin-buttons">
-            <button class="admin-button" pButton label="CREAR NUEVA AGENDA MANUAL" routerLink="/admin/create-manual-schedule"></button>
-            <button class="admin-button" pButton label="CREAR NUEVO TECNICO" routerLink="/admin/create-technician"></button>
-            <button class="admin-button" pButton label="VER REPORTES" routerLink="/admin/view-reports"></button>
-            <button class="admin-button" pButton label="VER AGENDA GENERAL" routerLink="/admin/view-general-schedule"></button>
-            <button class="admin-button" pButton label="SUBIR ARCHIVO TECNICOS" routerLink="/admin/upload-technician-file"></button>
-            <button class="admin-button" pButton label="VER TECNICOS" routerLink="/admin/view-technicians"></button>
+  <div class="p-col-12 main-panel">
+    <p-dataView [value]="orders">
+      <ng-template let-order pTemplate="listItem">
+        <div class="order-card">
+          <div class="order">
+            <div class="order-header">
+              <div class="order-title">
+                <span class="order-id">Order {{ order.orderId }}</span>
+                <span class="order-status" [ngClass]="{'resolved': getOrderStatus(order) === 'RESUELTA', 'scheduled': getOrderStatus(order) === 'AGENDADA', 'open': getOrderStatus(order) === 'ABIERTA'}">{{ getOrderStatus(order) }}</span>
+              </div>
+              <div class="report-date">{{ order.reportDate | date: 'M/d/yy' }}</div>
+            </div>
+            <div class="order-content">
+              <div class="order-description">Tipo de daño: {{ order.damageId }}</div>
+              <div class="order-client-tech">
+                <span>ID Cliente: {{ order.customerId }}</span>
+                <span>ID Técnico: {{ order.technicianId ? order.technicianId : 'N/A' }}</span>
+              </div>
+              <!-- Botón para asignar técnico -->
+              <div *ngIf="shouldShowAssignButton(order)" class="assign-technician-button">
+                <button pButton type="button" label="Asignar Técnico" (click)="showAssignTechnicianDialog(order)"></button>
+              </div>
+            </div>
           </div>
-          
-      </div>
+        </div>
+      </ng-template>
+    </p-dataView>
+  </div>
+
+  <div class="p-col-12 p-md-4 admin-panel">
+    <div class="admin-image-container">
+      <!-- Contenido del contenedor de imagen del administrador -->
+    </div>
+    <div class="admin-name">
+      ADMIN
+    </div>
+    <div class="admin-buttons">
+      
+      <button class="admin-button" pButton label="CREAR NUEVO TECNICO" routerLink="/admin/create-technician"></button>
+      <button class="admin-button" pButton label="VER REPORTES" routerLink="/admin/view-reports"></button>
+      <button class="admin-button" pButton label="VER AGENDA GENERAL" routerLink="/admin/view-general-schedule"></button>
+      <button class="admin-button" pButton label="VER TECNICOS" routerLink="/admin/view-technicians"></button>
+    </div>
+  </div>
 </div>

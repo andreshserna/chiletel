@@ -31,7 +31,9 @@ public class Damage {
     private Integer priority;
 
     @Column(name = "ESTIMATED_DURATION")
-    private Duration estimatedDuration;  // Usando java.time.Duration para representar INTERVAL DAY TO SECOND
+    private Duration estimatedDuration; 
 
-    // Getters, Setters, Constructors
+    public void setId(Long damageId) {
+        this.damageId = damageId;
+    }
 }

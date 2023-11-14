@@ -32,6 +32,8 @@ export class TechnicianService {
     const specialtyPayload = { damageId: damageId };
     return this.http.post(`${this.apiUrl}/${technicianId}/specialties`, specialtyPayload);
   }
-
-  // Otros métodos como updateTechnician, deleteTechnician, etc.
+  
+  getTechnicianSpecialties(technicianId: number): Observable<any[]> {
+    return this.http.get<any[]>(`${this.apiUrl}/technician-specialties/${technicianId}/specialties`);
+  }
 }

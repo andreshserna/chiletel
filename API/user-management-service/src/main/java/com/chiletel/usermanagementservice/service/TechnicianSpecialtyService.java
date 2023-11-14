@@ -29,4 +29,8 @@ public class TechnicianSpecialtyService {
     public Optional<TechnicianSpecialty> findById(Long id) {
         return technicianSpecialtyRepository.findById(id);
     }
+    
+    public List<TechnicianSpecialty> findSpecialtiesByTechnicianId(Long technicianId) {
+        return technicianSpecialtyRepository.findByIdTechnicianId(technicianId);
+    }
 }

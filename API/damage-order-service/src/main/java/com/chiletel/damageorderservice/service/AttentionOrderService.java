@@ -2,7 +2,10 @@ package com.chiletel.damageorderservice.service;
 
 import com.chiletel.damageorderservice.dto.AttentionOrderDTO;
 import com.chiletel.damageorderservice.model.AttentionOrder;
+import com.chiletel.damageorderservice.model.Technician;
 import com.chiletel.damageorderservice.repository.AttentionOrderRepository;
+import com.chiletel.damageorderservice.repository.TechnicianRepository;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -12,11 +15,13 @@ import java.util.Optional;
 @Service
 public class AttentionOrderService {
 
-    private final AttentionOrderRepository attentionOrderRepository;
+	private final AttentionOrderRepository attentionOrderRepository;
+    private final TechnicianRepository technicianRepository; // Asegúrate de tener esta línea
 
     @Autowired
-    public AttentionOrderService(AttentionOrderRepository attentionOrderRepository) {
+    public AttentionOrderService(AttentionOrderRepository attentionOrderRepository, TechnicianRepository technicianRepository) {
         this.attentionOrderRepository = attentionOrderRepository;
+        this.technicianRepository = technicianRepository; // Asignación correcta
     }
 
     public List<AttentionOrder> getAllOrders() {
@@ -37,6 +42,13 @@ public class AttentionOrderService {
     
     public List<AttentionOrder> getOrdersByTechnicianId(Long technicianId) {
         return attentionOrderRepository.findByTechnicianTechnicianId(technicianId);
+    }
+    
+    public Optional<AttentionOrder> assignTechnician(Long orderId, Long technicianId) {
+        return getOrderById(orderId).flatMap(order -> technicianRepository.findById(technicianId).map(technician -> {
+            order.setTechnician(technician);
+            return attentionOrderRepository.save(order);
+        }));
     }
 
     public Optional<AttentionOrder> updateOrderDuration(Long id, AttentionOrderDTO orderDTO) {

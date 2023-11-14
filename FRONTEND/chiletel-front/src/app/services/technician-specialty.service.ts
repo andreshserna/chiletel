@@ -22,6 +22,4 @@ export class TechnicianSpecialtyService {
   createSpecialty(specialty: TechnicianSpecialty): Observable<TechnicianSpecialty> {
     return this.http.post<TechnicianSpecialty>(this.apiUrl, specialty);
   }
-
-  // Otros métodos según sea necesario
 }

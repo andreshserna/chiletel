@@ -16,7 +16,7 @@ export class CustomerDashboardComponent implements OnInit {
     const customerId = parseInt(localStorage.getItem('customerId') || '0');
     if (customerId) {
       this.attentionOrderService.getOrdersByCustomerId(customerId).subscribe(data => {
-        this.orders = data;
+        this.orders = this.sortOrdersByStatus(data);
       });
     }
   }
@@ -28,6 +28,23 @@ export class CustomerDashboardComponent implements OnInit {
       return 'AGENDADA';
     } else {
       return 'ABIERTA';
+    }
+  }
+
+  sortOrdersByStatus(orders: AttentionOrder[]): AttentionOrder[] {
+    return orders.sort((a, b) => {
+      const statusA = this.getOrderStatus(a);
+      const statusB = this.getOrderStatus(b);
+      return this.statusPriority(statusA) - this.statusPriority(statusB);
+    });
+  }
+
+  statusPriority(status: string): number {
+    switch (status) {
+      case 'ABIERTA': return 1;
+      case 'AGENDADA': return 2;
+      case 'RESUELTA': return 3;
+      default: return 4;
     }
   }
 }

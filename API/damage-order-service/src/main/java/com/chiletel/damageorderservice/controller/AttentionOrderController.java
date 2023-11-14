@@ -43,7 +43,6 @@ public class AttentionOrderController {
                 .collect(Collectors.toList());
     }
 
-    // Nuevo método para obtener órdenes por ID de técnico
     @GetMapping("/technician/{technicianId}")
     public List<AttentionOrderDTO> getOrdersByTechnicianId(@PathVariable Long technicianId) {
         return attentionOrderService.getOrdersByTechnicianId(technicianId).stream()
@@ -57,6 +56,14 @@ public class AttentionOrderController {
                 .map(order -> ResponseEntity.ok(AttentionOrderMapper.toDTO(order)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }
+    
+    @PutMapping("/{id}/assign-technician")
+    public ResponseEntity<AttentionOrderDTO> assignTechnicianToOrder(@PathVariable Long id, @RequestBody Long technicianId) {
+        return attentionOrderService.assignTechnician(id, technicianId)
+                .map(order -> ResponseEntity.ok(AttentionOrderMapper.toDTO(order)))
+                .orElseGet(() -> ResponseEntity.notFound().build());
+    }
+
 
 
     @PostMapping
