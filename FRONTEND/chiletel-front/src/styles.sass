@@ -1,17 +1,106 @@
-/* You can add global styles to this file, and also import other style files */
+// Importaciones y estilos globales
 @import "primeng/resources/themes/lara-light-blue/theme.css"
 @import "primeng/resources/primeng.min.css"
 @import "https://fonts.googleapis.com/css?family=Dosis"
 @import url('https://fonts.googleapis.com/css2?family=Dosis:wght@400;500;600;700&display=swap')
 
 
-html, body
-  font-family: 'Dosis', sans-serif !important
-
-
-
 .p-dataview
   .p-dataview-content
     background-color: #D9D9D9
 
+.p-card-body
+  display: flex
+  flex-direction: column
+  font-family: 'Dosis', sans-serif !important
 
+.ng-star-inserted
+  font-family: 'Dosis', sans-serif !important
+  font-size: 3rem
+
+.p-card
+  border-radius: 10px
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
+  margin: 10px
+  margin-left: auto
+  margin-right: auto
+  padding: 10px
+  width: 99%
+
+
+  
+// Estilos específicos para la página de inicio de sesión
+.custom-card
+  background-color: #f4f4f4 
+  padding: 20px
+  margin-top: 50px 
+  width: 400px 
+  border-radius: 15px
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) 
+
+.p-dialog
+  .p-dialog-content
+    padding: 20px
+    background-color: #fff 
+    border-radius: 15px 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2) 
+
+.p-field
+  margin: 15px 0 
+
+input[type="text"], input[type="password"]
+  border: 1px solid #ddd 
+  border-radius: 5px 
+  padding: 10px 
+
+.admin-btn, .customer-btn, .tech-btn
+  border-radius: 10px
+  box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.2)
+  color: #000000
+  font-family: 'Dosis', sans-serif !important
+  font-size: 1.5rem
+  margin: 10px
+  padding: 10px
+  width: 99%
+  transition: background-color 0.3s, box-shadow 0.3s 
+
+  &:hover
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3) 
+    transform: translateY(-2px) 
+
+.admin-btn
+  background-color: #966C45 !important
+  &:hover
+    background-color: darken(#966C45, 10%) !important
+
+.customer-btn
+  background-color: #61B064 !important
+  border: none !important
+  &:hover
+    background-color: darken(#61B064, 10%) !important
+
+.tech-btn
+  background-color: #FFB800 !important
+  &:hover
+    background-color: darken(#FFB800, 10%) !important
+
+
+
+#duration
+  margin-left: 2rem
+
+#username
+  margin-left: 2rem
+
+#password
+  margin-left: 2rem
+
+#name
+  margin-left: 2rem
+
+#lastname
+  margin-left: 2rem
+
+
+app-navbar > p-menubar > div > div.p-menubar-end > button:nth-child(1)
+    margin-right: 1rem !important
