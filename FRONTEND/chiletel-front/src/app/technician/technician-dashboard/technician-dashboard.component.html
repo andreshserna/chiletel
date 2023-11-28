@@ -3,27 +3,28 @@
 <div class="p-grid">
   <div class="p-col-12 p-md-8 main-panel">
     <p-dataView [value]="orders">
-        <ng-template let-order pTemplate="listItem">
-          <div class="order-card">
-            <div class="order">
-              <div class="order-header">
-                <div class="order-title">
-                  <span class="order-id">Orden {{ order.orderId }}</span>
-                </div>
-                <div class="report-date">{{ order.reportDate | date: 'M/d/yy' }}</div>
-                <div *ngIf="shouldShowUpdateButton(order)" class="update-duration-button">
-                  <button pButton type="button" label="Actualizar Duración" (click)="showDurationDialog(order)"></button>
-                </div>
+      <ng-template let-order pTemplate="listItem">
+        <div class="order-card">
+          <div class="order">
+            <div class="order-header">
+              <div class="order-title">
+                <span class="order-id" (click)="showCustomerDetails(order.customerId)">Orden {{ order.orderId }}</span>
+                <button pButton type="button" icon="pi pi-plus" class="show-customer-button" (click)="showCustomerDetails(order.customerId)"></button>
               </div>
-              <div class="order-content">
-                <div class="order-description">Tipo de Daño: {{ order.damageId }}</div>
-                <div class="order-client-tech">
-                  <span>ID Cliente: {{ order.customerId }}</span>
-                </div>
+              <div class="report-date">{{ order.reportDate | date: 'M/d/yy' }}</div>
+              <div *ngIf="shouldShowUpdateButton(order)" class="update-duration-button">
+                <button pButton type="button" label="Actualizar Duración" (click)="showDurationDialog(order)"></button>
+              </div>
+            </div>
+            <div class="order-content">
+              <div class="order-description">Tipo de Daño: {{ order.damageId }}</div>
+              <div class="order-client-tech">
+                <span>ID Cliente: {{ order.customerId }}</span>
               </div>
             </div>
           </div>
-        </ng-template>
+        </div>
+      </ng-template>
     </p-dataView>
   </div>
 
@@ -36,16 +37,17 @@
     </div>
     <div class="technician-details">
       <p>ID: {{ technician?.technicianId }}</p>
-    <p>Cuadrilla: {{ technician?.crewId }}</p>
+      <p>Cuadrilla: {{ technician?.crewId }}</p>
     </div>
   </div>
 </div>
+
 <p-dialog header="Actualizar Duración" [(visible)]="durationDialogVisible" [modal]="true" [style]="{width: '50vw'}">
   <div class="p-fluid">
-      <div class="p-field">
-          <label for="duration">Duración (e.g., PT1H)</label>
-          <input id="duration" type="text" pInputText [(ngModel)]="selectedOrderDuration">
-      </div>
-      <button pButton type="button" label="Guardar" (click)="updateOrderDuration()"></button>
+    <div class="p-field">
+      <label for="duration">Duración (e.g., PT1H)</label>
+      <input id="duration" type="text" pInputText [(ngModel)]="selectedOrderDuration">
+    </div>
+    <button pButton type="button" label="Guardar" (click)="updateOrderDuration()"></button>
   </div>
 </p-dialog>

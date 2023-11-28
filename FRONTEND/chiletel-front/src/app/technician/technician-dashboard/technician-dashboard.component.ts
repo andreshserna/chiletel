@@ -3,6 +3,7 @@ import { AttentionOrder } from 'src/app/models/attention-order.model';
 import { AttentionOrderService } from 'src/app/services/attentionorder.service';
 import { Technician } from 'src/app/models/technician.model';
 import { TechnicianService } from 'src/app/services/technician.service';
+import { Customer } from 'src/app/models/customer.model';
 
 @Component({
   selector: 'app-technician-dashboard',
@@ -15,11 +16,12 @@ export class TechnicianDashboardComponent implements OnInit {
   durationDialogVisible: boolean = false;
   selectedOrderDuration: string = '';
   selectedOrderId: number | null = null;
+  selectedCustomer: Customer | null = null;
 
   constructor(
     private attentionOrderService: AttentionOrderService,
     private technicianService: TechnicianService
-    ) {}
+  ) {}
 
   ngOnInit(): void {
     this.loadTechnicianDetails();
@@ -29,9 +31,8 @@ export class TechnicianDashboardComponent implements OnInit {
   loadTechnicianDetails(): void {
     const technicianId = parseInt(localStorage.getItem('technicianId') || '0');
     if (technicianId) {
-      this.technicianService.getTechnicianById(technicianId).subscribe(tech => {
+      this.technicianService.getTechnicianById(technicianId).subscribe((tech) => {
         this.technician = tech;
-        // Aquí también puedes llamar a getTechnicianSpecialties si es necesario
       });
     }
   }
@@ -77,5 +78,13 @@ export class TechnicianDashboardComponent implements OnInit {
       const updateB = this.shouldShowUpdateButton(b) ? 0 : 1;
       return updateA - updateB;
     });
+  }
+
+  showCustomerDetails(customer: Customer): void {
+    this.selectedCustomer = customer;
+  }
+
+  closeCustomerDetails(): void {
+    this.selectedCustomer = null;
   }
 }
