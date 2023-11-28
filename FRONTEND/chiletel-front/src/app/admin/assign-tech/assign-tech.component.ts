@@ -20,6 +20,7 @@ export class AssignTechComponent implements OnInit {
 
   loadUnassignedOrders(): void {
     this.attentionOrderService.getUnassignedOrders().subscribe(data => {
+      console.log(data); // Agrega este console.log
       this.unassignedOrders = data;
     });
   }

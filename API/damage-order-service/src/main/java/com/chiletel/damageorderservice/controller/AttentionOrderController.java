@@ -1,6 +1,7 @@
 package com.chiletel.damageorderservice.controller;
 
 import com.chiletel.damageorderservice.dto.AttentionOrderDTO;
+import com.chiletel.damageorderservice.dto.TechnicianAssignmentDTO;
 import com.chiletel.damageorderservice.mapper.AttentionOrderMapper;
 import com.chiletel.damageorderservice.model.AttentionOrder;
 import com.chiletel.damageorderservice.service.AttentionOrderService;
@@ -50,6 +51,13 @@ public class AttentionOrderController {
                 .collect(Collectors.toList());
     }
     
+    @GetMapping("/unassigned")
+    public List<AttentionOrderDTO> getUnassignedOrders() {
+        return attentionOrderService.getUnassignedOrders().stream()
+            .map(AttentionOrderMapper::toDTO)
+            .collect(Collectors.toList());
+    }
+    
     @PutMapping("/{id}")
     public ResponseEntity<AttentionOrderDTO> updateOrderDuration(@PathVariable Long id, @RequestBody AttentionOrderDTO orderDTO) {
         return attentionOrderService.updateOrderDuration(id, orderDTO)
@@ -58,8 +66,8 @@ public class AttentionOrderController {
     }
     
     @PutMapping("/{id}/assign-technician")
-    public ResponseEntity<AttentionOrderDTO> assignTechnicianToOrder(@PathVariable Long id, @RequestBody Long technicianId) {
-        return attentionOrderService.assignTechnician(id, technicianId)
+    public ResponseEntity<AttentionOrderDTO> assignTechnicianToOrder(@PathVariable Long id, @RequestBody TechnicianAssignmentDTO assignmentDTO) {
+        return attentionOrderService.assignTechnician(id, assignmentDTO.getTechnicianId())
                 .map(order -> ResponseEntity.ok(AttentionOrderMapper.toDTO(order)))
                 .orElseGet(() -> ResponseEntity.notFound().build());
     }

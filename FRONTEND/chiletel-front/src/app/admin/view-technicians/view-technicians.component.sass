@@ -5,7 +5,7 @@
 
   .admin-main-panel
     width: 66%
-    background-color: #D9D9D9
+    background-color: #EDEDED
     height: 90%
     margin: auto
     border-radius: 36px
@@ -18,19 +18,31 @@
     flex-direction: column
     padding: 15px
     border-radius: 16px
-    background-color: #F2F2F2
+    background-color: #F8F8F8
     margin-bottom: 10px
-    border-left: 5px solid #966C45
+    border-left: 5px solid #4A90E2
 
     .technician-info
       .technician-name
         font-weight: bold
+        font-size: 1.5rem
 
       .technician-details
         margin-top: 5px
         span
           display: block
           margin-top: 3px
+
+  button
+    background-color: #FFA726
+    color: white
+    border: none
+    border-radius: 10px
+    padding: 10px 15px
+    font-size: 1rem
+    cursor: pointer
+    &:hover
+      background-color: darken(#FFA726, 10%)
 
   .admin-panel
     background-color: #966C45
@@ -51,8 +63,8 @@
     .admin-name
       font-size: 24px
       font-weight: bold
-      margin-bottom: 20px
       color: white
+      margin-bottom: 20px
 
     .admin-buttons
       display: flex
@@ -61,14 +73,15 @@
       gap: 10px
 
       .admin-button
-        background-color: white
-        color: #333
-        padding: 10px
-        border-radius: 4px
+        background-color: #FFA726
+        color: white
         border: none
+        border-radius: 10px
+        padding: 10px 15px
+        font-size: 1rem
         cursor: pointer
         &:hover
-          background-color: darken(white, 5%)
+          background-color: darken(#FFA726, 10%)
 
 @media (max-width: 600px)
   .p-grid
