@@ -1,6 +1,6 @@
 .p-grid
   display: flex
-  height: 100vh
+  height: 90vh
   background-color: white
 
   .p-col-12
@@ -55,31 +55,41 @@
       border-radius: 4px
 
 .admin-panel
+  background-color: #966C45
+  width: 33%
+  max-width: 390px
+  margin: auto
+  height: 90%
+  border-radius: 36px
+  display: flex
+  flex-direction: column
+  align-items: center
+  padding: 20px
+
   .admin-image-container
     height: 100px
     margin-bottom: 20px
 
   .admin-name
-    font-size: 24px
-    font-weight: bold
+    font-size: 2rem
     color: white
     margin-bottom: 20px
 
   .admin-buttons
     display: flex
     flex-direction: column
-    width: 100%
+    gap: 10px
 
     .admin-button
-      background-color: #fff
-      color: #333
-      padding: 10px
-      border-radius: 4px
+      background-color: #FFA726
+      color: white
       border: none
+      border-radius: 10px
+      padding: 10px 15px
+      font-size: 1rem
       cursor: pointer
-      margin-bottom: 10px
       &:hover
-        background-color: darken(#fff, 5%)
+        background-color: darken(#FFA726, 10%)
 
 @media (max-width: 600px)
   .p-grid
@@ -87,5 +97,4 @@
 
     .p-md-8, .p-md-4
       width: 100%
-      max-width: 100%
-      flex: none
+      max-w

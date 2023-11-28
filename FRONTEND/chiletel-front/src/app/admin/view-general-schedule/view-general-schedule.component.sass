@@ -86,15 +86,15 @@
     gap: 10px
 
     .admin-button
-      background-color: #FFA726 
-      color: white
-      border: none
-      border-radius: 10px
-      padding: 10px 15px
-      font-size: 1rem
-      cursor: pointer
-      &:hover
-        background-color: darken(#FFA726, 10%)
+        background-color: #FFA726 
+        color: white
+        border: none
+        border-radius: 10px
+        padding: 10px 15px
+        font-size: 1rem
+        cursor: pointer
+        &:hover
+          background-color: darken(#FFA726, 10%)
 
 
 .assign-technician-button
@@ -105,6 +105,79 @@
     &:hover
       background-color: darken(#5C6BC0, 10%)
 
+
+@media (max-width: 600px)
+  .p-grid
+    flex-direction: column
+
+    .main-panel, .admin-panel
+      width: 100%
+      padding: 0
+      height: auto
+
+
+.p-grid
+  display: flex
+  height: 90vh
+  background-color: white
+
+  .main-panel
+    width: 66%
+    background-color: #EDEDED 
+    height: 90%
+    margin: auto
+    border-radius: 36px
+    padding: 15px
+    overflow-y: auto
+    max-height: 90vh
+
+  .order-card
+    display: flex
+    flex-direction: column
+    padding: 15px
+    border-radius: 16px
+    background-color: #F8F8F8 
+    margin-bottom: 10px
+    border-left: 5px solid #4A90E2 
+
+    // Estilos para .order, .order-header, etc. van aquí
+
+  .admin-panel
+    background-color: #966C45
+    width: 33%
+    max-width: 390px
+    margin: auto
+    height: 90%
+    border-radius: 36px
+    display: flex
+    flex-direction: column
+    align-items: center
+    padding: 20px
+
+    .admin-image-container
+      height: 100px
+      margin-bottom: 20px
+
+    .admin-name
+      font-size: 2rem
+      color: white
+      margin-bottom: 20px
+
+    .admin-buttons
+      display: flex
+      flex-direction: column
+      gap: 10px
+
+      .admin-button
+        background-color: #FFA726 
+        color: white
+        border: none
+        border-radius: 10px
+        padding: 10px 15px
+        font-size: 1rem
+        cursor: pointer
+        &:hover
+          background-color: darken(#FFA726, 10%)
 
 @media (max-width: 600px)
   .p-grid

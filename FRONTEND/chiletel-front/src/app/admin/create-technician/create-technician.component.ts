@@ -61,7 +61,7 @@ export class CreateTechnicianComponent implements OnInit {
         form.resetForm();
       },
       (error) => {
-        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el técnico: ' + error.message });
+        this.messageService.add({ severity: 'error', summary: 'Error', detail: 'No se pudo agregar el técnico, verifica si no existe ya: ' + error.message });
       }
     );
   }
