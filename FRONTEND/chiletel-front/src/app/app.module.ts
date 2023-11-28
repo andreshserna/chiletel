@@ -36,6 +36,7 @@ import { UploadTechnicianFileComponent } from './admin/upload-technician-file/up
 import { ViewTechniciansComponent } from './admin/view-technicians/view-technicians.component';
 import { ReportDamageComponent } from './customer/report-damage/report-damage.component';
 import { AttentionOrderService } from './services/attentionorder.service';
+import { AssignTechComponent } from './admin/assign-tech/assign-tech.component';
 
 @NgModule({
   declarations: [
@@ -52,7 +53,8 @@ import { AttentionOrderService } from './services/attentionorder.service';
     ViewGeneralScheduleComponent,
     UploadTechnicianFileComponent,
     ViewTechniciansComponent,
-    ReportDamageComponent
+    ReportDamageComponent,
+    AssignTechComponent
   ],
   imports: [
     BrowserModule,

@@ -44,6 +44,10 @@ public class AttentionOrderService {
         return attentionOrderRepository.findByTechnicianTechnicianId(technicianId);
     }
     
+    public List<AttentionOrder> getUnassignedOrders() {
+        return attentionOrderRepository.findByTechnicianIsNull();
+    }
+    
     public Optional<AttentionOrder> assignTechnician(Long orderId, Long technicianId) {
         return getOrderById(orderId).flatMap(order -> technicianRepository.findById(technicianId).map(technician -> {
             order.setTechnician(technician);

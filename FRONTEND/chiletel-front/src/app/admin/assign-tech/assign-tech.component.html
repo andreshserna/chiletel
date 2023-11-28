@@ -1,0 +1,25 @@
+<app-navbar></app-navbar>
+<div class="p-grid">
+  <div class="p-col-12 main-panel">
+    <div class="assign-tech-container">
+      <h2>Asignar Técnico a Orden de Atención</h2>
+      <div class="assignment-form">
+        <div class="form-group">
+          <label for="orderSelect">Seleccionar Orden:</label>
+          <select id="orderSelect" [(ngModel)]="selectedOrderId" class="form-control">
+            <option *ngFor="let order of unassignedOrders" [value]="order.orderId">
+              Orden {{ order.orderId }} - {{ order.orderDescription }}
+            </option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="technicianId">ID del Técnico:</label>
+          <input id="technicianId" type="number" [(ngModel)]="technicianId" class="form-control">
+        </div>
+
+        <button (click)="assignTechnician()" class="btn btn-primary">Asignar Técnico</button>
+      </div>
+    </div>
+  </div>
+</div>

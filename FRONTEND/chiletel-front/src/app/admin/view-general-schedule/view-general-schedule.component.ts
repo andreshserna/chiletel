@@ -58,6 +58,7 @@ export class ViewGeneralScheduleComponent implements OnInit {
 
   showAssignTechnicianDialog(order: AttentionOrder): void {
     this.selectedOrderId = order.orderId;
+    this.selectedTechnicianId = null; // Reiniciar el ID del técnico seleccionado
     this.technicianDialogVisible = true;
   }
 

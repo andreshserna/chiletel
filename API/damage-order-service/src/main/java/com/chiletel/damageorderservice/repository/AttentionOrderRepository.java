@@ -15,4 +15,6 @@ public interface AttentionOrderRepository extends JpaRepository<AttentionOrder, 
 	
 	List<AttentionOrder> findByTechnicianTechnicianId(Long technicianId);
 	
+	List<AttentionOrder> findByTechnicianIsNull();
+	
 }

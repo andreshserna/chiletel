@@ -29,16 +29,14 @@
 
   <div class="p-col-12 p-md-4 technician-panel">
     <div class="technician-info-container">
-      <!-- Aquí puedes incluir la foto o el logo del técnico -->
+      <!-- foto del técnico -->
     </div>
     <div class="technician-name">
-      Nombre del Técnico
+      {{ technician?.name }}
     </div>
     <div class="technician-details">
-      <p>ID: </p>
-      <p>Especialidades: </p>
-      <p>Cuadrilla: </p>
-      <!-- Más detalles que desees agregar -->
+      <p>ID: {{ technician?.technicianId }}</p>
+    <p>Cuadrilla: {{ technician?.crewId }}</p>
     </div>
   </div>
 </div>

@@ -18,10 +18,6 @@
                 <span>ID Cliente: {{ order.customerId }}</span>
                 <span>ID Técnico: {{ order.technicianId ? order.technicianId : 'N/A' }}</span>
               </div>
-              <!-- Botón para asignar técnico -->
-              <div *ngIf="shouldShowAssignButton(order)" class="assign-technician-button">
-                <button pButton type="button" label="Asignar Técnico" (click)="showAssignTechnicianDialog(order)"></button>
-              </div>
             </div>
           </div>
         </div>
@@ -45,3 +41,14 @@
     </div>
   </div>
 </div>
+<!-- Diálogo para asignar técnico (fuera del *ngFor) -->
+<p-dialog header="Asignar Técnico" [(visible)]="technicianDialogVisible" [modal]="true" [style]="{width: '50vw'}">
+  <div class="p-fluid">
+    <div class="p-field">
+      <label for="technicianId">ID del Técnico</label>
+      <input id="technicianId" type="number" pInputText [(ngModel)]="selectedTechnicianId">
+    </div>
+    <button pButton type="button" label="Asignar" (click)="assignTechnician()"></button>
+    <button pButton type="button" label="Cancelar" (click)="technicianDialogVisible = false" class="ui-button-secondary"></button>
+  </div>
+</p-dialog>

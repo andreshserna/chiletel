@@ -33,7 +33,7 @@ export class AttentionOrderService {
   }
 
   assignTechnicianToOrder(orderId: number, technicianId: number): Observable<any> {
-    return this.http.put(`${this.apiUrl}/${orderId}/assign-technician`, technicianId);
+    return this.http.put(`${this.apiUrl}/${orderId}/assign-technician`, { technicianId });
   }
   
 
@@ -41,4 +41,9 @@ export class AttentionOrderService {
   updateOrderDuration(orderId: number, duration: string): Observable<any> {
     return this.http.put(`${this.apiUrl}/${orderId}`, { duration: duration });
   }
+
+  getUnassignedOrders(): Observable<AttentionOrder[]> {
+    return this.http.get<AttentionOrder[]>(`${this.apiUrl}/unassigned`);
+  }
+
 }
